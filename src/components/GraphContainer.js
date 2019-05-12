@@ -1,32 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
+import XAxisInput from "../XAxisInput";
 
 const GraphContainer = () => {
-  const [inputsCount, setInputCount] = useState([null, null, null]);
-
-  const renderInputs = () => {
-    return inputsCount.map((e, index) => {
-      return (
-        <div className="ui input" style={{ marginTop: 5, display: "block" }}>
-          <input key={index} value={e} placeholder="0" />
-        </div>
-      );
-    });
-  };
-
+  //TODO: State for how many XAxis input the user defines. Map each data-series in its own render function.
   return (
     <div className="ui container">
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         Grapher
       </div>
-      <div style={{ marginTop: 20 }}>{renderInputs()}</div>
-      <div style={{ marginTop: 10 }}>
-        <button
-          className="ui basic tiny black button"
-          onClick={() => setInputCount(prevState => [...prevState, null])}
-        >
-          +
-        </button>
-      </div>
+      <XAxisInput />
     </div>
   );
 };
