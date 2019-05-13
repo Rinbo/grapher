@@ -8,7 +8,9 @@ const GraphContainer = () => {
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         Grapher
       </div>
-      <XAxisInput />
+      <form>
+        <XAxisInput />
+      </form>
     </div>
   );
 };

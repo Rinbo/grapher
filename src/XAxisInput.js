@@ -1,14 +1,24 @@
 import React, { Fragment, useState } from "react";
 
 const XAxisInput = () => {
-  const [inputs, setInputs] = useState([null, null, null]);
+  const [inputs, setInputs] = useState([0, 0, 0]);
 
   const renderInputs = () => {
-    // TODO: Figure out how to make onChange function update the value at the correct index
-    return inputs.map((e, index) => {
+    return inputs.map((input, index) => {
       return (
-        <div className="ui input" style={{ marginTop: 5, display: "block" }}>
-          <input key={index} value={e} placeholder="0" />
+        <div
+          className="ui input"
+          style={{ marginTop: 5, display: "block" }}
+          key={index}
+        >
+          <input
+            value={input}
+            onChange={e => {
+              const newState = [...inputs];
+              newState[index] = e.target.value;
+              setInputs(newState);
+            }}
+          />
         </div>
       );
     });
@@ -19,7 +29,7 @@ const XAxisInput = () => {
       <div style={{ marginTop: 10 }}>
         <button
           className="ui basic tiny black button"
-          onClick={() => setInputs(prevState => [...prevState, null])}
+          onClick={() => setInputs(prevState => [...prevState, 0])}
         >
           +
         </button>
