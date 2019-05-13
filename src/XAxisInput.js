@@ -1,10 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
-const XAxisInput = () => {
-  const [inputs, setInputs] = useState([0, 0, 0]);
-
+const XAxisInput = ({ inputs, setInputs, dataSeriesIndex }) => {
   const renderInputs = () => {
-    return inputs.map((input, index) => {
+    return inputs[dataSeriesIndex].map((input, index) => {
       return (
         <div
           className="ui input"
@@ -15,7 +13,7 @@ const XAxisInput = () => {
             value={input}
             onChange={e => {
               const newState = [...inputs];
-              newState[index] = e.target.value;
+              newState[dataSeriesIndex][index] = e.target.value;
               setInputs(newState);
             }}
           />
@@ -29,7 +27,12 @@ const XAxisInput = () => {
       <div style={{ marginTop: 10 }}>
         <button
           className="ui basic tiny black button"
-          onClick={() => setInputs(prevState => [...prevState, 0])}
+          onClick={e => {
+            e.preventDefault();
+            const newState = [...inputs];
+            newState[dataSeriesIndex].push(0);
+            setInputs(newState);
+          }}
         >
           +
         </button>
