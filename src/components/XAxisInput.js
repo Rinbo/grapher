@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const XAxisInput = ({ inputs, setInputs, dataSeriesIndex }) => {
   const renderInputs = () => {
@@ -21,24 +21,7 @@ const XAxisInput = ({ inputs, setInputs, dataSeriesIndex }) => {
       );
     });
   };
-  return (
-    <Fragment>
-      <div style={{ marginTop: 20 }}>{renderInputs()}</div>
-      <div style={{ marginTop: 10 }}>
-        <button
-          className="ui basic tiny black button"
-          onClick={e => {
-            e.preventDefault();
-            const newState = [...inputs];
-            newState[dataSeriesIndex].push(0);
-            setInputs(newState);
-          }}
-        >
-          +
-        </button>
-      </div>
-    </Fragment>
-  );
+  return <div style={{ marginTop: 20 }}>{renderInputs()}</div>;
 };
 
 export default XAxisInput;
