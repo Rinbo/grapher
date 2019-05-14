@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import XAxisInput from "../XAxisInput";
 
 const GraphContainer = () => {
-  const [inputs, setInputs] = useState([[0, 0, 0]]);
-  //TODO: State for how many XAxis input the user defines. Map each data-series in its own render function.
+  const [inputs, setInputs] = useState([[0, 0, 0], [0,0,0]]);
   const renderXDataSeries = () => {
     return inputs.map((arr, index) => (
       <XAxisInput
