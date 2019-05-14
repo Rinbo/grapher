@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import XAxisInput from "../XAxisInput";
+import XAxisInput from "./XAxisInput";
+import YAxisInputs from "./YAxisInputs";
 
 const GraphContainer = () => {
-  const [inputs, setInputs] = useState([[0, 0, 0], [0,0,0]]);
+  const [xInputs, setXInputs] = useState([[0, 0, 0], [0, 0, 0]]);
+  const [yInputs, setYInputs] = useState([0, 0, 0]);
   const renderXDataSeries = () => {
-    return inputs.map((arr, index) => (
+    return xInputs.map((arr, index) => (
       <XAxisInput
         key={index}
-        inputs={inputs}
-        setInputs={setInputs}
+        inputs={xInputs}
+        setInputs={setXInputs}
         dataSeriesIndex={index}
       />
     ));
@@ -18,8 +20,9 @@ const GraphContainer = () => {
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         Grapher
       </div>
-      <form onSubmit={() => alert(inputs)}>
+      <form onSubmit={() => alert(xInputs)}>
         {renderXDataSeries()}
+        <YAxisInputs inputs={yInputs} setInputs={setYInputs} />
         <button className="ui basic button" style={{ marginTop: 10 }}>
           Submit
         </button>
