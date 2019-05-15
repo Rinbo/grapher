@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import XAxisInput from "./XAxisInput";
 import YAxisInputs from "./YAxisInputs";
 import "../app.css";
+import LineGraph from "./LineGraph";
 
 const GraphContainer = () => {
   const [xInputs, setXInputs] = useState([[0, 0, 0], [0, 0, 0]]);
@@ -35,6 +36,7 @@ const GraphContainer = () => {
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         Grapher
       </div>
+      <LineGraph />
       <form onSubmit={() => alert(xInputs)}>
         {renderDataSeries()}
         <button className="ui basic button" style={{ marginTop: 10 }}>
