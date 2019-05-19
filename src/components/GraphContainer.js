@@ -26,9 +26,8 @@ const GraphContainer = () => {
 
   const addDataPoints = e => {
     e.preventDefault();
-    const newXState = yInputs.map(arr => [...arr, 0]);
-    setYInputs(newXState);
-    setYInputs(prevState => [...prevState, 0]);
+    const newYState = yInputs.map(arr => [...arr, 0]);
+    setYInputs(newYState);
   };
 
   return (
