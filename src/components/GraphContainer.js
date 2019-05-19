@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import DatasetInputter from "./DatasetInputter";
 import LineGraph from "./LineGraph";
-import LabelInputter from "./LabelInputter";
+import SettingsModal from "./utility/SettingsModal";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[0, 0, 0], [0, 0, 0]]);
   const [titles, setTitles] = useState(["Robin", "Sixten"]);
-  const [labels, setLables] = useState(["Time", "Score"]);
+  const [labels, setLabels] = useState(["Time", "Score"]);
 
   const renderDataSeries = () => {
     return (
@@ -40,13 +40,13 @@ const GraphContainer = () => {
         Grapher
       </div>
       <LineGraph labels={labels} titles={titles} />
-      <button
-        className="ui button basic"
-        style={{ marginTop: 15, marginBottom: 15 }}
-        onClick={renderModal()}
-      >
-        Graph Settings
-      </button>
+      <SettingsModal
+        setLabels={setLabels}
+        labels={labels}
+        content=""
+        title="Graph Settings"
+        buttonName="Change Settings"
+      />
       <form onSubmit={() => alert(yInputs)}>
         {renderDataSeries()}
         <button className="ui basic button" style={{ marginTop: 10 }}>
