@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DatasetInputter from "./DatasetInputter";
-import "../app.css";
 import LineGraph from "./LineGraph";
+import LabelInputter from "./LabelInputter";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[0, 0, 0], [0, 0, 0]]);
@@ -30,12 +30,23 @@ const GraphContainer = () => {
     setYInputs(prevState => [...prevState, 0]);
   };
 
+  const renderModal = () => {
+    return null;
+  };
+
   return (
     <div className="ui container">
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         Grapher
       </div>
       <LineGraph labels={labels} titles={titles} />
+      <button
+        className="ui button basic"
+        style={{ marginTop: 15, marginBottom: 15 }}
+        onClick={renderModal()}
+      >
+        Graph Settings
+      </button>
       <form onSubmit={() => alert(yInputs)}>
         {renderDataSeries()}
         <button className="ui basic button" style={{ marginTop: 10 }}>

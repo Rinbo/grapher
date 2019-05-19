@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import history from "../history";
 import GraphContainer from "./GraphContainer";
-import "../app.css"
+import "semantic-ui-css/semantic.min.css";
+import "../app.css";
 
 const routes = () => (
   <Switch>
