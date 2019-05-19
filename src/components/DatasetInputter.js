@@ -9,11 +9,11 @@ const DatasetInputter = ({ inputs, setInputs, dataSeriesIndex }) => {
           style={{ marginTop: 5, display: "block" }}
           key={index}
         >
-          <input
+          <input            
             value={input}
             onChange={e => {
               const newState = [...inputs];
-              newState[dataSeriesIndex][index] = e.target.value;
+              newState[dataSeriesIndex][index] = parseInt(e.target.value);
               setInputs(newState);
             }}
           />

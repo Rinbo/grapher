@@ -5,7 +5,7 @@ import SettingsModal from "./utility/SettingsModal";
 import XAxisLabelInputter from "./XAxisLabelInputter";
 
 const GraphContainer = () => {
-  const [yInputs, setYInputs] = useState([[0, 0, 0], [0, 0, 0]]);
+  const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
   const [datasetNames] = useState(["Robin", "Sixten"]);
   const [axisNames, setAxisNames] = useState(["Time", "Score"]);
@@ -31,7 +31,7 @@ const GraphContainer = () => {
     e.preventDefault();
     const newYState = yInputs.map(arr => [...arr, 0]);
     setYInputs(newYState);
-    setXAxisLabels(prevState => [...prevState, prevState.length+1]);
+    setXAxisLabels(prevState => [...prevState, prevState.length + 1]);
   };
 
   return (
@@ -39,7 +39,12 @@ const GraphContainer = () => {
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         {title}
       </div>
-      <LineGraph setAxisNames={setAxisNames} titles={datasetNames} />
+      <LineGraph
+        labels={xAxisLabels}
+        datasetNames={datasetNames}
+        datasets={yInputs}
+        axisNames={axisNames}
+      />
       <SettingsModal
         setAxisNames={setAxisNames}
         axisNames={axisNames}
