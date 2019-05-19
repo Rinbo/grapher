@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import DatasetInputter from "./DatasetInputter";
 import LineGraph from "./LineGraph";
 import SettingsModal from "./utility/SettingsModal";
+import XAxisLabelInputter from "./XAxisLabelInputter";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[0, 0, 0], [0, 0, 0]]);
-  const [dataSetTitles, setDataSetTitles] = useState(["Robin", "Sixten"]);
+  const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
+  const [datasetNames] = useState(["Robin", "Sixten"]);
   const [axisNames, setAxisNames] = useState(["Time", "Score"]);
   const [title, setTitle] = useState("My Graph");
 
   const renderDataSeries = () => {
     return (
       <div className="grid">
+        <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} />
         {yInputs.map((arr, index) => (
           <DatasetInputter
             key={index}
@@ -28,6 +31,7 @@ const GraphContainer = () => {
     e.preventDefault();
     const newYState = yInputs.map(arr => [...arr, 0]);
     setYInputs(newYState);
+    setXAxisLabels(prevState => [...prevState, prevState.length+1]);
   };
 
   return (
@@ -35,7 +39,7 @@ const GraphContainer = () => {
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         {title}
       </div>
-      <LineGraph setAxisNames={setAxisNames} titles={dataSetTitles} />
+      <LineGraph setAxisNames={setAxisNames} titles={datasetNames} />
       <SettingsModal
         setAxisNames={setAxisNames}
         axisNames={axisNames}
