@@ -2,9 +2,9 @@ import React from "react";
 
 const AXIS_NAMES = ["X-axis", "Y-axis"];
 
-const LabelInputter = ({ labels, setLabels }) => {
+const AxisNames = ({ axisNames, setAxisNames }) => {
   const renderLabels = () => {
-    return labels.map((label, index) => {
+    return axisNames.map((name, index) => {
       return (
         <div className="ui form inverted">
           <div
@@ -14,11 +14,11 @@ const LabelInputter = ({ labels, setLabels }) => {
           >
             <label>{AXIS_NAMES[index]}</label>
             <input
-              value={label}
+              value={name}
               onChange={e => {
-                const newState = [...labels];
+                const newState = [...axisNames];
                 newState[index] = e.target.value;
-                setLabels(newState);
+                setAxisNames(newState);
               }}
             />
           </div>
@@ -30,4 +30,4 @@ const LabelInputter = ({ labels, setLabels }) => {
   return renderLabels();
 };
 
-export default LabelInputter;
+export default AxisNames;

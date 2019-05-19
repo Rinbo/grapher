@@ -5,8 +5,9 @@ import SettingsModal from "./utility/SettingsModal";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[0, 0, 0], [0, 0, 0]]);
-  const [titles, setTitles] = useState(["Robin", "Sixten"]);
-  const [labels, setLabels] = useState(["Time", "Score"]);
+  const [dataSetTitles, setDataSetTitles] = useState(["Robin", "Sixten"]);
+  const [axisNames, setAxisNames] = useState(["Time", "Score"]);
+  const [title, setTitle] = useState("My Graph");
 
   const renderDataSeries = () => {
     return (
@@ -30,21 +31,19 @@ const GraphContainer = () => {
     setYInputs(prevState => [...prevState, 0]);
   };
 
-  const renderModal = () => {
-    return null;
-  };
-
   return (
     <div className="ui container">
       <div className="ui centered header" style={{ paddingTop: 30 }}>
-        Grapher
+        {title}
       </div>
-      <LineGraph labels={labels} titles={titles} />
+      <LineGraph setAxisNames={setAxisNames} titles={dataSetTitles} />
       <SettingsModal
-        setLabels={setLabels}
-        labels={labels}
+        setAxisNames={setAxisNames}
+        axisNames={axisNames}
+        title={title}
+        setTitle={setTitle}
         content=""
-        title="Graph Settings"
+        modalTitle="Graph Settings"
         buttonName="Change Settings"
       />
       <form onSubmit={() => alert(yInputs)}>

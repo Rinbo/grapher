@@ -1,13 +1,33 @@
 import React, { useState } from "react";
 import { Button, Header, Modal } from "semantic-ui-react";
-import LabelInputter from "../LabelInputter";
+import AxisNames from "../AxisNames";
 
-const SettingsModal = ({ setLabels, labels, content, title, buttonName }) => {
+const SettingsModal = ({
+  setAxisNames,
+  axisNames,
+  title,
+  setTitle,
+  content,
+  modalTitle,
+  buttonName
+}) => {
   const [show, setShow] = useState(false);
+
+  const renderGraphTitle = () => {
+    return (
+      <div className="ui inverted form">
+        <div className="field">
+          <label>Title</label>
+          <input value={title} onChange={e => setTitle(e.target.value)} />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <Modal
       trigger={
-        <Button          
+        <Button
           basic
           color={"black"}
           style={{ width: 200, marginTop: 15 }}
@@ -21,10 +41,11 @@ const SettingsModal = ({ setLabels, labels, content, title, buttonName }) => {
       basic
       size="small"
     >
-      <Header icon="edit" content={title} />
+      <Header icon="edit" content={modalTitle} />
       <Modal.Content>
         <p>{content}</p>
-        <LabelInputter labels={labels} setLabels={setLabels} />
+        {renderGraphTitle()}
+        <AxisNames axisNames={axisNames} setAxisNames={setAxisNames} />
       </Modal.Content>
       <Modal.Actions>
         <Button
