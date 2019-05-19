@@ -1,8 +1,8 @@
 import React from "react";
 
-const YAxisInputs = ({ inputs, setInputs }) => {
+const DatasetInputter = ({ inputs, setInputs, dataSeriesIndex }) => {
   const renderInputs = () => {
-    return inputs.map((input, index) => {
+    return inputs[dataSeriesIndex].map((input, index) => {
       return (
         <div
           className="ui input"
@@ -13,7 +13,7 @@ const YAxisInputs = ({ inputs, setInputs }) => {
             value={input}
             onChange={e => {
               const newState = [...inputs];
-              newState[index] = e.target.value;
+              newState[dataSeriesIndex][index] = e.target.value;
               setInputs(newState);
             }}
           />
@@ -24,4 +24,4 @@ const YAxisInputs = ({ inputs, setInputs }) => {
   return <div style={{ marginTop: 20 }}>{renderInputs()}</div>;
 };
 
-export default YAxisInputs;
+export default DatasetInputter;

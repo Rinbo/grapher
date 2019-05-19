@@ -1,33 +1,32 @@
 import React, { useState } from "react";
-import XAxisInput from "./XAxisInput";
-import YAxisInputs from "./YAxisInputs";
+import DatasetInputter from "./DatasetInputter";
 import "../app.css";
 import LineGraph from "./LineGraph";
 
 const GraphContainer = () => {
-  const [xInputs, setXInputs] = useState([[0, 0, 0], [0, 0, 0]]);
-  const [yInputs, setYInputs] = useState([0, 0, 0]);
+  const [yInputs, setYInputs] = useState([[0, 0, 0], [0, 0, 0]]);
+  const [titles, setTitles] = useState(["Robin", "Sixten"]);
+  const [labels, setLables] = useState(["Time", "Score"]);
 
   const renderDataSeries = () => {
     return (
       <div className="grid">
-        {xInputs.map((arr, index) => (
-          <XAxisInput
+        {yInputs.map((arr, index) => (
+          <DatasetInputter
             key={index}
-            inputs={xInputs}
-            setInputs={setXInputs}
+            inputs={yInputs}
+            setInputs={setYInputs}
             dataSeriesIndex={index}
           />
         ))}
-        <YAxisInputs inputs={yInputs} setInputs={setYInputs} />
       </div>
     );
   };
 
   const addDataPoints = e => {
     e.preventDefault();
-    const newXState = xInputs.map(arr => [...arr, 0]);
-    setXInputs(newXState);
+    const newXState = yInputs.map(arr => [...arr, 0]);
+    setYInputs(newXState);
     setYInputs(prevState => [...prevState, 0]);
   };
 
@@ -36,8 +35,8 @@ const GraphContainer = () => {
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         Grapher
       </div>
-      <LineGraph />
-      <form onSubmit={() => alert(xInputs)}>
+      <LineGraph labels={labels} titles={titles} />
+      <form onSubmit={() => alert(yInputs)}>
         {renderDataSeries()}
         <button className="ui basic button" style={{ marginTop: 10 }}>
           Submit
