@@ -30,7 +30,7 @@ const SettingsModal = ({
         <Button
           basic
           color={"black"}
-          style={{ width: 200, marginTop: 15 }}
+          style={{ width: 200, marginTop: 15, marginBottom: 20 }}
           onClick={() => setShow(true)}
         >
           {buttonName}

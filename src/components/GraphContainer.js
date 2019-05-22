@@ -3,6 +3,7 @@ import DatasetInputter from "./DatasetInputter";
 import LineGraph from "./LineGraph";
 import SettingsModal from "./utility/SettingsModal";
 import XAxisLabelInputter from "./XAxisLabelInputter";
+import DatasetNames from "./DatasetNames";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
@@ -15,14 +16,23 @@ const GraphContainer = () => {
     return (
       <div className="grid">
         <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} />
-        {yInputs.map((arr, index) => (
-          <DatasetInputter
-            key={index}
-            inputs={yInputs}
-            setInputs={setYInputs}
-            dataSeriesIndex={index}
-          />
-        ))}
+        {yInputs.map((arr, index) => {
+          return (
+            <div>
+              <DatasetNames
+                names={datasetNames}
+                setNames={setDatasetNames}
+                index={index}
+              />
+              <DatasetInputter
+                key={index}
+                inputs={yInputs}
+                setInputs={setYInputs}
+                dataSeriesIndex={index}
+              />
+            </div>
+          );
+        })}
       </div>
     );
   };
