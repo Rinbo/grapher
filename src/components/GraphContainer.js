@@ -7,7 +7,7 @@ import XAxisLabelInputter from "./XAxisLabelInputter";
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
-  const [datasetNames] = useState(["Robin", "Sixten"]);
+  const [datasetNames, setDatasetNames] = useState(["Robin", "Sixten"]);
   const [axisNames, setAxisNames] = useState(["Time", "Score"]);
   const [title, setTitle] = useState("My Graph");
 
@@ -56,18 +56,21 @@ const GraphContainer = () => {
       />
       <form onSubmit={() => alert(yInputs)}>
         {renderDataSeries()}
-        <button className="ui basic button" style={{ marginTop: 10 }}>
-          Submit
-        </button>
-      </form>
-      <div style={{ marginTop: 10 }}>
-        <button
+        <div
+          style={{ marginTop: 10 }}
           className="ui basic tiny black button"
           onClick={e => addDataPoints(e)}
         >
           +
+        </div>
+        <button
+          className="ui basic button"
+          style={{ marginTop: 10, display: "block" }}
+        >
+          Generate graph
         </button>
-      </div>
+      </form>
+      <div style={{ marginTop: 10 }} />
     </div>
   );
 };

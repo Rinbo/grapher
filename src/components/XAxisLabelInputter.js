@@ -21,7 +21,14 @@ const XAxisLabelInputter = ({ labels, setLabels }) => {
       );
     });
   };
-  return <div style={{ marginTop: 20 }}>{renderInputs()}</div>;
+  return (
+    <>
+      <div style={{ marginTop: 20, borderRight: "solid rgb(208, 255, 208)" }}>
+        <div className="ui centered sub header">X-labels</div>
+        {renderInputs()}
+      </div>
+    </>
+  );
 };
 
 export default XAxisLabelInputter;
