@@ -34,8 +34,21 @@ const GraphContainer = () => {
             </div>
           );
         })}
+        <Button
+          basic
+          onClick={e => {
+            e.preventDefault();
+            addDataSets(e);
+          }}
+        >
+          +
+        </Button>
       </div>
     );
+  };
+
+  const addDataSets = e => {
+    return null;
   };
 
   const addDataPoints = e => {
@@ -46,7 +59,7 @@ const GraphContainer = () => {
   };
 
   return (
-    <div className="ui container" style={{paddingBottom: 20}}>
+    <div className="ui container" style={{ paddingBottom: 20 }}>
       <div className="ui centered header" style={{ paddingTop: 30 }}>
         {title}
       </div>
