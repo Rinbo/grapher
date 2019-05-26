@@ -10,7 +10,7 @@ const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
-  const [axisNames, setAxisNames] = useState(["Time", "Score"]);
+  const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("My Graph");
 
   const renderDataSeries = () => {
@@ -30,6 +30,7 @@ const GraphContainer = () => {
                 inputs={yInputs}
                 setInputs={setYInputs}
                 dataSeriesIndex={index}
+                removeSetName={removeSetName}
               />
             </div>
           );
@@ -48,6 +49,11 @@ const GraphContainer = () => {
     );
   };
 
+  const removeSetName = index => {
+    const newState = datasetNames.filter(e => e != datasetNames[index]);
+    setDatasetNames(newState);
+  };
+
   const randomArray = length => {
     const arr = [];
     for (let i = 0; i < length; i++) {
@@ -58,7 +64,10 @@ const GraphContainer = () => {
 
   const addDataSets = e => {
     e.preventDefault();
-    const newYinputs = [...yInputs, randomArray(yInputs[0].length)];
+    const newYinputs = [
+      ...yInputs,
+      randomArray(yInputs[0] ? yInputs[0].length : 3)
+    ];
     setYInputs(newYinputs);
 
     const newNames = [...datasetNames, `Dataset ${datasetNames.length + 1}`];
