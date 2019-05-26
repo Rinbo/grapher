@@ -9,17 +9,17 @@ import { Button } from "semantic-ui-react";
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
-  const [datasetNames, setDatasetNames] = useState(["Robin", "Sixten"]);
+  const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["Time", "Score"]);
   const [title, setTitle] = useState("My Graph");
 
   const renderDataSeries = () => {
     return (
-      <div className="grid">
+      <div className="grid" id="da-button">
         <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} />
         {yInputs.map((arr, index) => {
           return (
-            <div>
+            <div key={index}>
               <DatasetNames
                 names={datasetNames}
                 setNames={setDatasetNames}
@@ -36,6 +36,7 @@ const GraphContainer = () => {
         })}
         <Button
           basic
+          style={{ minHeight: "100%" }}
           onClick={e => {
             e.preventDefault();
             addDataSets(e);
@@ -47,8 +48,20 @@ const GraphContainer = () => {
     );
   };
 
+  const randomizer = modifier => {
+    return Math.floor(Math.random() * modifier);
+  };
+
   const addDataSets = e => {
-    return null;
+    e.preventDefault();
+    const newYinputs = [
+      ...yInputs,
+      [randomizer(10), randomizer(10), randomizer(10)]
+    ];
+    setYInputs(newYinputs);
+
+    const newNames = [...datasetNames, `Dataset ${datasetNames.length + 1}`];
+    setDatasetNames(newNames);
   };
 
   const addDataPoints = e => {
