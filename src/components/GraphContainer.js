@@ -48,16 +48,17 @@ const GraphContainer = () => {
     );
   };
 
-  const randomizer = modifier => {
-    return Math.floor(Math.random() * modifier);
+  const randomArray = length => {
+    const arr = [];
+    for (let i = 0; i < length; i++) {
+      arr.push(Math.floor(Math.random() * 10));
+    }
+    return arr;
   };
 
   const addDataSets = e => {
     e.preventDefault();
-    const newYinputs = [
-      ...yInputs,
-      [randomizer(10), randomizer(10), randomizer(10)]
-    ];
+    const newYinputs = [...yInputs, randomArray(yInputs[0].length)];
     setYInputs(newYinputs);
 
     const newNames = [...datasetNames, `Dataset ${datasetNames.length + 1}`];
