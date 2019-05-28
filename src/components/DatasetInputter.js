@@ -30,7 +30,7 @@ const DatasetInputter = ({
 
   const removeSet = e => {
     e.preventDefault();
-    const newState = inputs.filter(e => e != inputs[dataSeriesIndex]);
+    const newState = inputs.filter(e => e !== inputs[dataSeriesIndex]);
     setInputs(newState);
     removeSetName(dataSeriesIndex);
   };

@@ -49,8 +49,13 @@ const GraphContainer = () => {
     );
   };
 
+  const onSubmit = e => {
+    e.preventDefault();
+    return null;
+  };
+
   const removeSetName = index => {
-    const newState = datasetNames.filter(e => e != datasetNames[index]);
+    const newState = datasetNames.filter(e => e !== datasetNames[index]);
     setDatasetNames(newState);
   };
 
@@ -115,7 +120,7 @@ const GraphContainer = () => {
           className="ui basic tiny black button"
           onClick={e => addDataPoints(e)}
         >
-          +
+          Add row
         </div>
       </form>
       <div style={{ marginTop: 10 }} />
