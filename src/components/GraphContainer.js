@@ -113,7 +113,7 @@ const GraphContainer = () => {
         datasets={yInputs}
         axisNames={axisNames}
       />
-      <form onSubmit={() => alert(yInputs)} style={{ marginTop: 20 }}>
+      <form onSubmit={e => onSubmit(e)}>
         {renderDataSeries()}
         <div
           style={{ marginTop: 10 }}
