@@ -4,6 +4,8 @@ import LineGraph from "./LineGraph";
 import SettingsModal from "./utility/SettingsModal";
 import XAxisLabelInputter from "./XAxisLabelInputter";
 import DatasetNames from "./DatasetNames";
+import endpoint from "../apis/endpoint";
+import convertToDto from "./convertToDto";
 import { Button } from "semantic-ui-react";
 
 const GraphContainer = () => {
@@ -12,6 +14,18 @@ const GraphContainer = () => {
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("My Graph");
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const restObject = convertToDto(
+      yInputs,
+      datasetNames,
+      xAxisLabels,
+      axisNames,
+      title
+    );
+    console.log(restObject);
+  };
 
   const renderDataSeries = () => {
     return (
@@ -47,11 +61,6 @@ const GraphContainer = () => {
         </Button>
       </div>
     );
-  };
-
-  const onSubmit = e => {
-    e.preventDefault();
-    return null;
   };
 
   const removeSetName = index => {
@@ -104,6 +113,8 @@ const GraphContainer = () => {
         basic
         color={"black"}
         style={{ width: 130, marginTop: 15, marginBottom: 20 }}
+        form="dataForm"
+        type="submit"
       >
         Generate link
       </Button>
@@ -113,7 +124,7 @@ const GraphContainer = () => {
         datasets={yInputs}
         axisNames={axisNames}
       />
-      <form onSubmit={e => onSubmit(e)}>
+      <form onSubmit={e => onSubmit(e)} id="dataForm">
         {renderDataSeries()}
         <div
           style={{ marginTop: 10 }}

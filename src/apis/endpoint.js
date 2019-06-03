@@ -9,8 +9,6 @@ if (hostname === "grapher.borjessons.nu") {
   backendHost = "http://localhost:8080/g-end";
 }
 
-export const host = backendHost;
-
 export default axios.create({
   baseURL: backendHost
 });
