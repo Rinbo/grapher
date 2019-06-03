@@ -24,7 +24,12 @@ const GraphContainer = () => {
       axisNames,
       title
     );
-    console.log(restObject);
+    endpoint
+      .post("/graphs", {...restObject})
+      .then(response => {
+        console.log("response: ", response);
+      })
+      .catch(e => console.log("Oh noooo!", e));
   };
 
   const renderDataSeries = () => {

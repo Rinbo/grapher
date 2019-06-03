@@ -1,8 +1,8 @@
 const convertToDto = (yInputs, datasetNames, xAxisLabels, axisNames, title) => {
   const convertedYInputs = yInputs.map(arr => {
     return {
-      datapoints: arr.map(datapoint => {
-        return { datapoint };
+      dataPoints: arr.map(dataPoint => {
+        return { dataPoint };
       })
     };
   });

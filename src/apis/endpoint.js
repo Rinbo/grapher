@@ -10,5 +10,6 @@ if (hostname === "grapher.borjessons.nu") {
 }
 
 export default axios.create({
-  baseURL: backendHost
+  baseURL: backendHost,
+  
 });
