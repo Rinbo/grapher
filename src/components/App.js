@@ -9,7 +9,11 @@ import "../app.css";
 const routes = () => (
   <Switch>
     <Route path="/" exact component={GraphContainer} />
-    <Route path="/graphs/:id" exact component={PublicGraph} />
+    <Route
+      path="/graphs/:id"
+      exact
+      render={props => <PublicGraph props={props} />}
+    />
   </Switch>
 );
 
