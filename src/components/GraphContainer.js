@@ -103,7 +103,7 @@ const GraphContainer = () => {
 
   return (
     <div className="ui container" style={{ paddingBottom: 20 }}>
-      <div className="ui centered header" style={{ paddingTop: 30 }}>
+      <div className="ui centered header" style={{ paddingTop: 5, textTransform: "uppercase" }}>
         {title}
       </div>
       <SettingsModal

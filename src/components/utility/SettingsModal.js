@@ -28,14 +28,14 @@ const SettingsModal = ({
     <Modal
       trigger={
         <Button
-          basic          
-          color={"black"}
+          basic                    
+          color="green"
           style={{ width: 130, marginTop: 15, marginBottom: 20 }}
           onClick={() => setShow(true)}
         >
           {buttonName}
         </Button>
-      }
+      }      
       open={show}
       onClose={() => setShow(false)}
       basic

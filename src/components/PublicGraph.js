@@ -31,7 +31,7 @@ const PublicGraph = ({ props }) => {
   }, []);
   return (
     <div className="ui container">
-      <div className="ui centered header" style={{ paddingTop: 30 }}>
+      <div className="ui centered header" style={{ paddingTop: 5, textTransform: "uppercase" }}>
         {title}
       </div>
       <LineGraph
