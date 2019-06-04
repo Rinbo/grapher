@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import endpoint from "../apis/endpoint";
+import LineGraph from "./LineGraph";
 
 const PublicGraph = ({ props }) => {
   const [yInputs, setYInputs] = useState([[], []]);
@@ -7,9 +8,9 @@ const PublicGraph = ({ props }) => {
   const [datasetNames, setDatasetNames] = useState([]);
   const [axisNames, setAxisNames] = useState([]);
   const [title, setTitle] = useState();
+  const publicString = props.match.params.id;
 
   useEffect(() => {
-    const publicString = props.match.params.id;
     endpoint
       .get(`/graphs/${publicString}`)
       .then(response => {
@@ -28,7 +29,20 @@ const PublicGraph = ({ props }) => {
       })
       .catch(e => alert("Failed to fetch graph data"));
   }, []);
-  return <div>Graph!!</div>;
+  return (
+    <div className="ui container">
+      <div className="ui centered header" style={{ paddingTop: 30 }}>
+        {title}
+      </div>
+      <LineGraph
+        title={title}
+        labels={xAxisLabels}
+        datasetNames={datasetNames}
+        datasets={yInputs}
+        axisNames={axisNames}
+      />
+    </div>
+  );
 };
 
 export default PublicGraph;

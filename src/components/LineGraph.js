@@ -2,7 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { options } from "./options";
 
-const LineGraph = ({ labels, datasets, datasetNames, axisNames }) => {
+const LineGraph = ({ labels, datasets, datasetNames, axisNames, title }) => {
   const renderDatasets = () => {
     return datasets.map((dataset, index) => {
       return {
@@ -19,7 +19,7 @@ const LineGraph = ({ labels, datasets, datasetNames, axisNames }) => {
   };
 
   return (
-    <div>
+    <div style={{ height: "60vh", paddingTop: 20, paddingBottom:10 }}>
       <Line
         data={{
           labels: labels,

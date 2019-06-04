@@ -28,7 +28,7 @@ const GraphContainer = () => {
     endpoint
       .post("/graphs", { ...restObject })
       .then(response => {
-        history.push(`/graphs/${response.data.publicString}`)
+        history.push(`/graphs/${response.data.publicString}`);
       })
       .catch(e => console.log("Oh noooo!", e));
   };
@@ -130,15 +130,15 @@ const GraphContainer = () => {
         datasets={yInputs}
         axisNames={axisNames}
       />
+      <div
+        style={{ marginBottom: 20 }}
+        className="ui basic tiny black button"
+        onClick={e => addDataPoints(e)}
+      >
+        Add row
+      </div>
       <form onSubmit={e => onSubmit(e)} id="dataForm">
         {renderDataSeries()}
-        <div
-          style={{ marginTop: 10 }}
-          className="ui basic tiny black button"
-          onClick={e => addDataPoints(e)}
-        >
-          Add row
-        </div>
       </form>
       <div style={{ marginTop: 10 }} />
     </div>
