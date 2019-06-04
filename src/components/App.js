@@ -3,7 +3,7 @@ import { Route, Router, Switch, Link } from "react-router-dom";
 import history from "../history";
 import GraphContainer from "./GraphContainer";
 import PublicGraph from "./PublicGraph";
-import logo from "../resources/b-grapher-black.jpg";
+import logo from "../resources/b-grapher-white.png";
 import "semantic-ui-css/semantic.min.css";
 import "../app.css";
 
@@ -23,7 +23,11 @@ const App = () => {
     <div>
       <Router history={history}>
         <Link to="/" className="item">
-          <img src={logo} alt="Borjesson Grapher" style={{width:180, padding:10}} />
+          <img
+            src={logo}
+            alt="Borjesson Grapher"
+            style={{ width: 180, padding: 10 }}
+          />
         </Link>
         {routes()}
       </Router>

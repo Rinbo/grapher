@@ -40,6 +40,8 @@ const DatasetInputter = ({
       {renderInputs()}
       <Button
         style={{ marginTop: 10 }}
+        inverted
+        color="green"
         basic
         size="tiny"
         icon="trash"

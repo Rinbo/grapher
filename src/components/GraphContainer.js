@@ -57,6 +57,8 @@ const GraphContainer = () => {
         })}
         <Button
           basic
+          inverted
+          color="green"
           style={{ minHeight: "100%" }}
           onClick={e => {
             e.preventDefault();
@@ -103,7 +105,7 @@ const GraphContainer = () => {
 
   return (
     <div className="ui container" style={{ paddingBottom: 20 }}>
-      <div className="ui centered header" style={{ paddingTop: 5, textTransform: "uppercase" }}>
+      <div className="ui centered inverted header" style={{ textTransform: "uppercase" }}>
         {title}
       </div>
       <SettingsModal
@@ -117,7 +119,8 @@ const GraphContainer = () => {
       />
       <Button
         basic
-        color={"black"}
+        inverted
+        color="green"
         style={{ width: 130, marginTop: 15, marginBottom: 20 }}
         form="dataForm"
         type="submit"
@@ -130,13 +133,16 @@ const GraphContainer = () => {
         datasets={yInputs}
         axisNames={axisNames}
       />
-      <div
+      <Button
         style={{ marginBottom: 20 }}
-        className="ui basic tiny black button"
+        basic
+        size="tiny"
+        inverted
+        color="green"
         onClick={e => addDataPoints(e)}
       >
         Add row
-      </div>
+      </Button>
       <form onSubmit={e => onSubmit(e)} id="dataForm">
         {renderDataSeries()}
       </form>

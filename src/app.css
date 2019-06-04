@@ -1,3 +1,8 @@
+body {
+  background-color: #1b1c1d;
+  color: #cccccc;
+}
+
 .grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(190px, 200px)) !important;

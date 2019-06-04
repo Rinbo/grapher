@@ -22,7 +22,7 @@ const XAxisLabelInputter = ({ labels, setLabels }) => {
     });
   };
   return (
-    <div style={{ borderRight: "solid 1px black" }}>
+    <div style={{ borderRight: "solid 1px #cccccc" }}>
       <div className="ui input">
         <input
           value="X-LABELS"

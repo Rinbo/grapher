@@ -14,7 +14,6 @@ const PublicGraph = ({ props }) => {
     endpoint
       .get(`/graphs/${publicString}`)
       .then(response => {
-        console.log(response.data);
         const res = response.data;
         const inputs = res.yInputs.map(arr => {
           return arr.dataPoints.map(dataPoint => dataPoint.dataPoint);
@@ -28,10 +27,13 @@ const PublicGraph = ({ props }) => {
         setTitle(res.title);
       })
       .catch(e => alert("Failed to fetch graph data"));
-  }, []);
+  }, [publicString]);
   return (
     <div className="ui container">
-      <div className="ui centered header" style={{ paddingTop: 5, textTransform: "uppercase" }}>
+      <div
+        className="ui centered inverted header"
+        style={{ textTransform: "uppercase" }}
+      >
         {title}
       </div>
       <LineGraph
