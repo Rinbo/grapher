@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import history from "../history";
 import DatasetInputter from "./DatasetInputter";
 import LineGraph from "./LineGraph";
 import SettingsModal from "./utility/SettingsModal";
@@ -25,9 +26,9 @@ const GraphContainer = () => {
       title
     );
     endpoint
-      .post("/graphs", {...restObject})
+      .post("/graphs", { ...restObject })
       .then(response => {
-        console.log("response: ", response);
+        history.push(`/graphs/${response.data.publicString}`)
       })
       .catch(e => console.log("Oh noooo!", e));
   };
