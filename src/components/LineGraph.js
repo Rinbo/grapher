@@ -7,7 +7,7 @@ const LineGraph = ({ labels, datasets, datasetNames, axisNames, userOptions }) =
     return datasets.map((dataset, index) => {
       return {                        
         label: datasetNames[index],
-        backgroundColor: userOptions.backgroundColor,
+        backgroundColor: userOptions.fillColor ? userOptions.backgroundColor : "",
         borderColor: "rgba(33,186,69,1)",
         borderWidth: 1,
         defaultFontColor: "#cccccc",
