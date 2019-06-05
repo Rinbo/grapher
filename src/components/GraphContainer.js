@@ -16,7 +16,8 @@ const GraphContainer = () => {
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("My Graph");
   const [userOptions, setUserOptions] = useState({
-    backgroundColor: "rgba(33,186,69,0.2)"
+    backgroundColor: "rgba(33,186,69,0.2)",
+    fillColor: true
   });
 
   const onSubmit = e => {
@@ -116,6 +117,8 @@ const GraphContainer = () => {
       </div>
       <SettingsModal
         setAxisNames={setAxisNames}
+        setUserOptions={setUserOptions}
+        userOptions={userOptions}
         axisNames={axisNames}
         title={title}
         setTitle={setTitle}

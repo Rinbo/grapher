@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Header, Modal } from "semantic-ui-react";
+import { Button, Header, Modal, Radio } from "semantic-ui-react";
 import AxisNames from "../AxisNames";
 
 const SettingsModal = ({
@@ -9,7 +9,9 @@ const SettingsModal = ({
   setTitle,
   content,
   modalTitle,
-  buttonName
+  buttonName,
+  setUserOptions,
+  userOptions
 }) => {
   const [show, setShow] = useState(false);
 
@@ -24,19 +26,39 @@ const SettingsModal = ({
     );
   };
 
+  const toggleFillColor = () => (
+    <div>
+      <label style={{ color: "#cccccc", display: "block", marginBottom: 10 }}>
+        Show fill color
+      </label>
+      <label className="switch">
+        <input
+          checked={userOptions.fillColor}
+          type="checkbox"
+          onChange={() => {
+            setUserOptions(prevState => {
+              return { ...prevState, fillColor: !prevState.fillColor };
+            });
+          }}
+        />
+        <span class="slider round" />
+      </label>
+    </div>
+  );
+
   return (
     <Modal
       trigger={
         <Button
           basic
-          inverted                    
+          inverted
           color="green"
           style={{ width: 130, marginTop: 15, marginBottom: 20 }}
           onClick={() => setShow(true)}
         >
           {buttonName}
         </Button>
-      }      
+      }
       open={show}
       onClose={() => setShow(false)}
       basic
@@ -47,6 +69,9 @@ const SettingsModal = ({
         <p>{content}</p>
         {renderGraphTitle()}
         <AxisNames axisNames={axisNames} setAxisNames={setAxisNames} />
+        <div className="ui field" style={{ marginTop: 15 }}>
+          {toggleFillColor()}
+        </div>
       </Modal.Content>
       <Modal.Actions>
         <Button
