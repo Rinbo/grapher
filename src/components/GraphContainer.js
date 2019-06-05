@@ -15,6 +15,9 @@ const GraphContainer = () => {
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("My Graph");
+  const [userOptions, setUserOptions] = useState({
+    backgroundColor: "rgba(33,186,69,0.2)"
+  });
 
   const onSubmit = e => {
     e.preventDefault();
@@ -105,7 +108,10 @@ const GraphContainer = () => {
 
   return (
     <div className="ui container" style={{ paddingBottom: 20 }}>
-      <div className="ui centered inverted header" style={{ textTransform: "uppercase" }}>
+      <div
+        className="ui centered inverted header"
+        style={{ textTransform: "uppercase" }}
+      >
         {title}
       </div>
       <SettingsModal
@@ -132,6 +138,7 @@ const GraphContainer = () => {
         datasetNames={datasetNames}
         datasets={yInputs}
         axisNames={axisNames}
+        userOptions={userOptions}
       />
       <Button
         style={{ marginBottom: 20 }}
