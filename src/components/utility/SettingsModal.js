@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Header, Modal, Radio } from "semantic-ui-react";
+import { Button, Header, Modal } from "semantic-ui-react";
 import AxisNames from "../AxisNames";
 
 const SettingsModal = ({
