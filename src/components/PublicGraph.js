@@ -8,6 +8,10 @@ const PublicGraph = ({ props }) => {
   const [datasetNames, setDatasetNames] = useState([]);
   const [axisNames, setAxisNames] = useState([]);
   const [title, setTitle] = useState();
+  const [userOptions, setUserOptions] = useState({
+    color: "",
+    fillColor: true
+  });
   const publicString = props.match.params.id;
 
   useEffect(() => {
@@ -42,6 +46,7 @@ const PublicGraph = ({ props }) => {
         datasetNames={datasetNames}
         datasets={yInputs}
         axisNames={axisNames}
+        userOptions={userOptions}
       />
     </div>
   );

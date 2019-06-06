@@ -14,7 +14,7 @@ const GraphContainer = () => {
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
-  const [title, setTitle] = useState("My Graph");
+  const [title, setTitle] = useState("Graph Title");
   const [userOptions, setUserOptions] = useState({
     color: "green",
     fillColor: true
@@ -40,7 +40,7 @@ const GraphContainer = () => {
   const renderDataSeries = () => {
     return (
       <div className="grid" id="da-button">
-        <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} />
+        <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} addDataPoints={addDataPoints} />
         {yInputs.map((arr, index) => {
           return (
             <div key={index}>
@@ -115,6 +115,14 @@ const GraphContainer = () => {
       >
         {title}
       </div>
+      <LineGraph
+        labels={xAxisLabels}
+        datasetNames={datasetNames}
+        datasets={yInputs}
+        axisNames={axisNames}
+        userOptions={userOptions}
+      />
+      <div>
       <SettingsModal
         setAxisNames={setAxisNames}
         setUserOptions={setUserOptions}
@@ -133,26 +141,10 @@ const GraphContainer = () => {
         style={{ width: 130, marginTop: 15, marginBottom: 20 }}
         form="dataForm"
         type="submit"
+        floated="right"
       >
         Generate link
-      </Button>
-      <LineGraph
-        labels={xAxisLabels}
-        datasetNames={datasetNames}
-        datasets={yInputs}
-        axisNames={axisNames}
-        userOptions={userOptions}
-      />
-      <Button
-        style={{ marginBottom: 20 }}
-        basic
-        size="tiny"
-        inverted
-        color="green"
-        onClick={e => addDataPoints(e)}
-      >
-        Add row
-      </Button>
+      </Button></div>     
       <form onSubmit={e => onSubmit(e)} id="dataForm">
         {renderDataSeries()}
       </form>

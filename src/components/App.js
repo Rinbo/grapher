@@ -22,13 +22,15 @@ const App = () => {
   return (
     <div>
       <Router history={history}>
-        <Link to="/" className="item">
-          <img
-            src={logo}
-            alt="Borjesson Grapher"
-            style={{ width: 180, padding: 10 }}
-          />
-        </Link>
+        <div style={{marginBottom: 20}}>
+          <Link to="/" className="item">
+            <img
+              src={logo}
+              alt="Borjesson Grapher"
+              style={{ width: 180, padding: 10 }}
+            />
+          </Link>
+        </div>
         {routes()}
       </Router>
     </div>
