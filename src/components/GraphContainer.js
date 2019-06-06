@@ -39,11 +39,11 @@ const GraphContainer = () => {
 
   const renderDataSeries = () => {
     return (
-      <div className="grid" id="da-button">
+      <div className="grid">
         <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} addDataPoints={addDataPoints} />
         {yInputs.map((arr, index) => {
           return (
-            <div key={index}>
+            <div key={index} style={{marginBottom: 10}}>
               <DatasetNames
                 names={datasetNames}
                 setNames={setDatasetNames}

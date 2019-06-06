@@ -106,8 +106,7 @@ const SettingsModal = ({
           <Dropdown
             placeholder="Colors"
             selection
-            options={colorOptions}
-            defaultValue="green"
+            options={colorOptions}            
             onChange={selectColor}
           />
         </div>

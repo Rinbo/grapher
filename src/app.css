@@ -3,15 +3,39 @@ body {
   color: #cccccc;
 }
 
-.grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 200px)) !important;
-  grid-template-rows: auto !important;
-  grid-gap: 12px;
+@media only screen and (max-width: 600px) {
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 100%)) !important;
+    grid-template-rows: auto !important;
+    grid-gap: 12px;
+  }
+
+  input {
+    height: 25px;
+    width: 100%;
+  }
+
+  .showBorder {
+    border: none;
+  }
 }
 
-input {
-  height: 25px;
+@media only screen and (min-width: 600px) {
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 200px)) !important;
+    grid-template-rows: auto !important;
+    grid-gap: 12px;
+  }
+
+  input {
+    height: 25px;
+  }
+
+  .showBorder {
+    border-right: solid 1px #cccccc;  
+  }
 }
 
 .unselectable {
@@ -46,8 +70,8 @@ input {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -58,8 +82,8 @@ input {
   left: 2px;
   bottom: 2px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
