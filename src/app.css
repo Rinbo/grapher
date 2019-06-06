@@ -16,6 +16,10 @@ body {
     width: 100%;
   }
 
+  .email {
+    width: 100%;
+  }
+
   .showBorder {
     border: none;
   }
@@ -29,12 +33,16 @@ body {
     grid-gap: 12px;
   }
 
+  .email {
+    width: 400px;
+  }
+
   input {
     height: 25px;
   }
 
   .showBorder {
-    border-right: solid 1px #cccccc;  
+    border-right: solid 1px #cccccc;
   }
 }
 

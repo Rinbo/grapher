@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import endpoint from "../apis/endpoint";
 import LineGraph from "./graphs/LineGraph";
+import SendEmail from "./utility/SendEmail";
+import { Button, Icon } from "semantic-ui-react";
 
 const PublicGraph = ({ props }) => {
   const [yInputs, setYInputs] = useState([[], []]);
@@ -12,13 +14,13 @@ const PublicGraph = ({ props }) => {
     color: null,
     fillColor: null
   });
+  const [showEmailForm, setShowEmailForm] = useState(false);
   const publicString = props.match.params.id;
 
   useEffect(() => {
     endpoint
       .get(`/graphs/${publicString}`)
       .then(response => {
-        console.log(response.data)
         const res = response.data;
         const inputs = res.yInputs.map(arr => {
           return arr.dataPoints.map(dataPoint => dataPoint.dataPoint);
@@ -34,6 +36,20 @@ const PublicGraph = ({ props }) => {
       })
       .catch(e => alert("Failed to fetch graph data"));
   }, [publicString]);
+
+  const renderButton = () => {
+    return (
+      <Button
+        inverted
+        basic
+        color="green"
+        onClick={() => setShowEmailForm(true)}
+      >
+        <Icon name="mail" inverted />Share link
+      </Button>
+    );
+  };
+
   return (
     <div className="ui container">
       <div
@@ -50,6 +66,11 @@ const PublicGraph = ({ props }) => {
         axisNames={axisNames}
         userOptions={userOptions}
       />
+      {showEmailForm ? (
+        <SendEmail setShowEmailForm={setShowEmailForm} />
+      ) : (
+        renderButton()
+      )}
     </div>
   );
 };
