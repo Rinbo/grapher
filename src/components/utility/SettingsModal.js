@@ -65,7 +65,6 @@ const SettingsModal = ({
   );
 
   const selectColor = (e, color) => {
-    console.log(color.value);
     setUserOptions(prevState => {
       return { ...prevState, color: color.value };
     });
@@ -106,7 +105,7 @@ const SettingsModal = ({
           <Dropdown
             placeholder="Colors"
             selection
-            options={colorOptions}            
+            options={colorOptions}
             onChange={selectColor}
           />
         </div>

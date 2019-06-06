@@ -50,6 +50,7 @@ const SendEmail = ({ setShowEmailForm, flashSuccess }) => {
             Send
           </Button>
           <Button
+            type="button"
             basic
             inverted
             color="red"
