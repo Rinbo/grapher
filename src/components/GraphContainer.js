@@ -127,6 +127,7 @@ const GraphContainer = () => {
         datasets={yInputs}
         axisNames={axisNames}
         userOptions={userOptions}
+        showLegend={false}
       />
       <div>
         <SettingsModal

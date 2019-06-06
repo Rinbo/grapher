@@ -1,7 +1,8 @@
-export const options = (xlabel, ylabel) => {
+export const options = (xlabel, ylabel, legend) => {
   const opts = {
     legend: {
-      display: false
+      display: legend,
+      position: "bottom"
     },
     scales: {
       xAxes: [

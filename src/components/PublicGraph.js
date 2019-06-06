@@ -45,9 +45,20 @@ const PublicGraph = ({ props }) => {
         color="green"
         onClick={() => setShowEmailForm(true)}
       >
-        <Icon name="mail" inverted />Share link
+        <Icon name="mail" inverted />
+        Share link
       </Button>
     );
+  };
+
+  const flashSuccess = () => {
+    const flashMessage = document.getElementById("flash");
+    flashMessage.style.visibility = "visible";
+    flashMessage.style.opacity = 1;
+    setTimeout(() => {
+      flashMessage.style.opacity = 0;
+      flashMessage.style.visibility = "hidden";
+    }, 2000);
   };
 
   return (
@@ -65,12 +76,17 @@ const PublicGraph = ({ props }) => {
         datasets={yInputs}
         axisNames={axisNames}
         userOptions={userOptions}
+        showLegend={true}
       />
       {showEmailForm ? (
-        <SendEmail setShowEmailForm={setShowEmailForm} />
+        <SendEmail
+          setShowEmailForm={setShowEmailForm}
+          flashSuccess={flashSuccess}
+        />
       ) : (
         renderButton()
       )}
+      <div id="flash">Email successfully sent</div>
     </div>
   );
 };

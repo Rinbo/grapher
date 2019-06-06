@@ -46,6 +46,14 @@ body {
   }
 }
 
+#flash {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
+  color: #21ba45;
+  margin-top: 10px;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

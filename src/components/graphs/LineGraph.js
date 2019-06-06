@@ -41,7 +41,8 @@ const LineGraph = ({
   datasets,
   datasetNames,
   axisNames,
-  userOptions
+  userOptions,
+  showLegend
 }) => {
   const renderDatasets = () => {
     return datasets.map((dataset, index) => {
@@ -71,7 +72,7 @@ const LineGraph = ({
         hoverBackgroundColor = "rgba(170, 4, 54, 0.4)";
         hoverBorderColor = "rgba(170, 4, 54, 1)";
       }
-   
+
       return {
         label: datasetNames[index],
         backgroundColor: userOptions.fillColor ? backgroundColor : "",
@@ -94,7 +95,7 @@ const LineGraph = ({
         }}
         width={400}
         height={400}
-        options={options(axisNames[0], axisNames[1])}
+        options={options(axisNames[0], axisNames[1], showLegend)}
       />
     </div>
   );
