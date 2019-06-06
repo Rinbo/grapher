@@ -60,14 +60,18 @@ const LineGraph = ({
         backgroundColor = BG_COLOR[i];
         hoverBackgroundColor = HOVER_COLOR[i];
         hoverBorderColor = BORDER_COLOR[i];
-      } else {
+      } else if (userOptions.color === "green") {
         borderColor = "rgba(33,186,69,1)";
         backgroundColor = "rgba(33,186,69,0.2)";
         hoverBackgroundColor = "rgba(33,186,69,0.4)";
         hoverBorderColor = "rgba(33,186,69,1)";
+      } else {
+        borderColor = "rgb(170, 4, 54)";
+        backgroundColor = "rgba(170, 4, 54, 0.2)";
+        hoverBackgroundColor = "rgba(170, 4, 54, 0.4)";
+        hoverBorderColor = "rgba(170, 4, 54, 1)";
       }
-      console.log(borderColor);
-
+   
       return {
         label: datasetNames[index],
         backgroundColor: userOptions.fillColor ? backgroundColor : "",

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Header, Modal } from "semantic-ui-react";
+import { Button, Header, Modal, Dropdown } from "semantic-ui-react";
 import AxisNames from "../AxisNames";
 
 const SettingsModal = ({
@@ -14,6 +14,24 @@ const SettingsModal = ({
   userOptions
 }) => {
   const [show, setShow] = useState(false);
+
+  const colorOptions = [
+    {
+      key: "green",
+      text: "Green",
+      value: "green"
+    },
+    {
+      key: "red",
+      text: "Red",
+      value: "red"
+    },
+    {
+      key: "multi",
+      text: "Multiple colors",
+      value: "multi"
+    }
+  ];
 
   const renderGraphTitle = () => {
     return (
@@ -41,10 +59,17 @@ const SettingsModal = ({
             });
           }}
         />
-        <span class="slider round" />
+        <span className="slider round" />
       </label>
     </div>
   );
+
+  const selectColor = (e, color) => {
+    console.log(color.value);
+    setUserOptions(prevState => {
+      return { ...prevState, color: color.value };
+    });
+  };
 
   return (
     <Modal
@@ -71,6 +96,20 @@ const SettingsModal = ({
         <AxisNames axisNames={axisNames} setAxisNames={setAxisNames} />
         <div className="ui field" style={{ marginTop: 15 }}>
           {toggleFillColor()}
+        </div>
+        <div style={{ marginTop: 15 }}>
+          <label
+            style={{ color: "#cccccc", display: "block", marginBottom: 10 }}
+          >
+            Choose a color theme
+          </label>
+          <Dropdown
+            placeholder="Colors"
+            selection
+            options={colorOptions}
+            defaultValue="green"
+            onChange={selectColor}
+          />
         </div>
       </Modal.Content>
       <Modal.Actions>

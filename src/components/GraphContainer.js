@@ -16,7 +16,7 @@ const GraphContainer = () => {
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("My Graph");
   const [userOptions, setUserOptions] = useState({
-    color: "multi",
+    color: "green",
     fillColor: true
   });
 
