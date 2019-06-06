@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Header, Modal, Dropdown } from "semantic-ui-react";
-import AxisNames from "../AxisNames";
+import AxisNames from "../inputs/AxisNames";
 
 const SettingsModal = ({
   setAxisNames,

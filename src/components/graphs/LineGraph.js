@@ -1,6 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { options } from "./options";
+import { options } from "../utility/options";
 
 const BORDER_COLOR = [
   "rgb(255, 0, 0)",

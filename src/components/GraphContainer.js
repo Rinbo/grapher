@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import history from "../history";
-import DatasetInputter from "./DatasetInputter";
-import LineGraph from "./LineGraph";
+import DatasetInputter from "./inputs/DatasetInputter";
+import LineGraph from "./graphs/LineGraph";
 import SettingsModal from "./utility/SettingsModal";
-import XAxisLabelInputter from "./XAxisLabelInputter";
-import DatasetNames from "./DatasetNames";
+import XAxisLabelInputter from "./inputs/XAxisLabelInputter";
+import DatasetNames from "./inputs/DatasetNames";
 import endpoint from "../apis/endpoint";
-import convertToDto from "./convertToDto";
+import convertToDto from "./utility/convertToDto";
 import { Button } from "semantic-ui-react";
+import ConfirmationModal from "./utility/ConfirmationModal";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
@@ -27,6 +28,7 @@ const GraphContainer = () => {
       datasetNames,
       xAxisLabels,
       axisNames,
+      userOptions,
       title
     );
     endpoint
@@ -40,10 +42,14 @@ const GraphContainer = () => {
   const renderDataSeries = () => {
     return (
       <div className="grid">
-        <XAxisLabelInputter labels={xAxisLabels} setLabels={setXAxisLabels} addDataPoints={addDataPoints} />
+        <XAxisLabelInputter
+          labels={xAxisLabels}
+          setLabels={setXAxisLabels}
+          addDataPoints={addDataPoints}
+        />
         {yInputs.map((arr, index) => {
           return (
-            <div key={index} style={{marginBottom: 10}}>
+            <div key={index} style={{ marginBottom: 10 }}>
               <DatasetNames
                 names={datasetNames}
                 setNames={setDatasetNames}
@@ -92,7 +98,7 @@ const GraphContainer = () => {
     e.preventDefault();
     const newYinputs = [
       ...yInputs,
-      randomArray(yInputs[0] ? yInputs[0].length : 3)
+      randomArray(yInputs[0] ? yInputs[0].length : xAxisLabels.length)
     ];
     setYInputs(newYinputs);
 
@@ -123,28 +129,19 @@ const GraphContainer = () => {
         userOptions={userOptions}
       />
       <div>
-      <SettingsModal
-        setAxisNames={setAxisNames}
-        setUserOptions={setUserOptions}
-        userOptions={userOptions}
-        axisNames={axisNames}
-        title={title}
-        setTitle={setTitle}
-        content=""
-        modalTitle="Graph Settings"
-        buttonName="Settings"
-      />
-      <Button
-        basic
-        inverted
-        color="green"
-        style={{ width: 130, marginTop: 15, marginBottom: 20 }}
-        form="dataForm"
-        type="submit"
-        floated="right"
-      >
-        Generate link
-      </Button></div>     
+        <SettingsModal
+          setAxisNames={setAxisNames}
+          setUserOptions={setUserOptions}
+          userOptions={userOptions}
+          axisNames={axisNames}
+          title={title}
+          setTitle={setTitle}
+          content=""
+          modalTitle="Graph Settings"
+          buttonName="Settings"
+        />
+        <ConfirmationModal onSubmit={onSubmit} />
+      </div>
       <form onSubmit={e => onSubmit(e)} id="dataForm">
         {renderDataSeries()}
       </form>

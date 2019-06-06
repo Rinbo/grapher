@@ -1,4 +1,11 @@
-const convertToDto = (yInputs, datasetNames, xAxisLabels, axisNames, title) => {
+const convertToDto = (
+  yInputs,
+  datasetNames,
+  xAxisLabels,
+  axisNames,
+  userOptions,
+  title
+) => {
   const convertedYInputs = yInputs.map(arr => {
     return {
       dataPoints: arr.map(dataPoint => {
@@ -34,7 +41,8 @@ const convertToDto = (yInputs, datasetNames, xAxisLabels, axisNames, title) => {
     xAxisName: axisNames[0],
     yAxisName: axisNames[1],
     title: title,
-    publicString: generatePublicString(12)
+    publicString: generatePublicString(12),
+    userOptions: userOptions
   };
 };
 

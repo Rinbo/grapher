@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import endpoint from "../apis/endpoint";
-import LineGraph from "./LineGraph";
+import LineGraph from "./graphs/LineGraph";
 
 const PublicGraph = ({ props }) => {
   const [yInputs, setYInputs] = useState([[], []]);
@@ -9,8 +9,8 @@ const PublicGraph = ({ props }) => {
   const [axisNames, setAxisNames] = useState([]);
   const [title, setTitle] = useState();
   const [userOptions, setUserOptions] = useState({
-    color: "",
-    fillColor: true
+    color: null,
+    fillColor: null
   });
   const publicString = props.match.params.id;
 
@@ -18,6 +18,7 @@ const PublicGraph = ({ props }) => {
     endpoint
       .get(`/graphs/${publicString}`)
       .then(response => {
+        console.log(response.data)
         const res = response.data;
         const inputs = res.yInputs.map(arr => {
           return arr.dataPoints.map(dataPoint => dataPoint.dataPoint);
@@ -28,6 +29,7 @@ const PublicGraph = ({ props }) => {
           res.datasetNames.map(datasetName => datasetName.datasetName)
         );
         setAxisNames([res.xAxisName, res.yAxisName]);
+        setUserOptions(response.data.userOptions);
         setTitle(res.title);
       })
       .catch(e => alert("Failed to fetch graph data"));
