@@ -2,6 +2,40 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { options } from "./options";
 
+const BORDER_COLOR = [
+  "rgb(255, 0, 0)",
+  "rgb(0, 0, 255)",
+  "rgb(0, 255, 0)",
+  "rgb(255, 153, 0)",
+  "rgb(255, 0, 255)",
+  "rgb(0, 102, 0)",
+  "rgb(255, 255, 0)",
+  "rgb(255, 153, 255)",
+  "rgb(0, 255, 255)"
+];
+const BG_COLOR = [
+  "rgba(255, 0, 0, 0.2)",
+  "rgba(0, 0, 255, 0.2)",
+  "rgba(0, 255, 0, 0.2)",
+  "rgba(255, 153, 0, 0.2)",
+  "rgba(255, 0, 255, 0.2)",
+  "rgba(0, 102, 0, 0.2)",
+  "rgba(255, 255, 0, 0.2)",
+  "rgba(255, 153, 255, 0.2)",
+  "rgba(0, 255, 255, 0.2)"
+];
+const HOVER_COLOR = [
+  "rgba(255, 0, 0, 0.4)",
+  "rgba(0, 0, 255, 0.4)",
+  "rgba(0, 255, 0, 0.4)",
+  "rgba(255, 153, 0, 0.4)",
+  "rgba(255, 0, 255, 0.4)",
+  "rgba(0, 102, 0, 0.4)",
+  "rgba(255, 255, 0, 0.4)",
+  "rgba(255, 153, 255, 0.4)",
+  "rgba(0, 255, 255, 0.4)"
+];
+
 const LineGraph = ({
   labels,
   datasets,
@@ -15,15 +49,17 @@ const LineGraph = ({
       let backgroundColor;
       let hoverBackgroundColor;
       let hoverBorderColor;
+      let i;
 
       if (userOptions.color === "multi") {
-        const r = 255 * Math.floor(Math.random() * 2);
-        const g = 255 * Math.floor(Math.random() * 2);
-        const b = 255 * Math.floor(Math.random() * 2);
-        borderColor = `rgba(${r}, ${g}, ${b}, 1)`;
-        backgroundColor = `rgba(${r}, ${g}, ${b}, 0.2)`;
-        hoverBackgroundColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
-        hoverBorderColor = `rgba(${r}, ${g}, ${b}}, 1)`;
+        index > BORDER_COLOR.length
+          ? (i = Math.floor(Math.random() * 9))
+          : (i = index);
+
+        borderColor = BORDER_COLOR[i];
+        backgroundColor = BG_COLOR[i];
+        hoverBackgroundColor = HOVER_COLOR[i];
+        hoverBorderColor = BORDER_COLOR[i];
       } else {
         borderColor = "rgba(33,186,69,1)";
         backgroundColor = "rgba(33,186,69,0.2)";
