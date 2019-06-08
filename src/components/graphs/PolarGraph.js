@@ -1,9 +1,9 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { options } from "../utility/options";
-import { BG_COLOR, BORDER_COLOR, HOVER_COLOR } from "./colors.js";
+import { BG_COLOR, BORDER_COLOR, HOVER_COLOR } from "./colors";
 
-const LineGraph = ({
+const PolarGraph = ({
   labels,
   datasets,
   datasetNames,
@@ -42,12 +42,12 @@ const LineGraph = ({
 
       return {
         label: datasetNames[index],
-        backgroundColor: userOptions.fillColor ? backgroundColor : "",
-        borderColor: borderColor,
+        backgroundColor: userOptions.fillColor
+          ? backgroundColor
+          : BG_COLOR.slice(0, dataset.length),
         borderWidth: 1,
         defaultFontColor: "#cccccc",
-        hoverBackgroundColor,
-        hoverBorderColor,
+        hoverColor: HOVER_COLOR.slice(0, dataset.length),
         data: [...dataset]
       };
     });
@@ -55,17 +55,17 @@ const LineGraph = ({
 
   return (
     <div style={{ paddingTop: 20, paddingBottom: 10 }}>
-      <Line
+      <Pie
         data={{
           labels: labels,
           datasets: renderDatasets()
         }}
         width={400}
         height={400}
-        options={options(axisNames[0], axisNames[1], showLegend)}
+        options={options(axisNames[0], axisNames[1], showLegend, false, false)}
       />
     </div>
   );
 };
 
-export default LineGraph;
+export default PolarGraph;

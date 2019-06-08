@@ -9,6 +9,7 @@ import endpoint from "../apis/endpoint";
 import convertToDto from "./utility/convertToDto";
 import { Button } from "semantic-ui-react";
 import ConfirmationModal from "./utility/ConfirmationModal";
+import PolarGraph from "./graphs/PolarGraph";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
@@ -121,13 +122,13 @@ const GraphContainer = () => {
       >
         {title}
       </div>
-      <LineGraph
+      <PolarGraph
         labels={xAxisLabels}
         datasetNames={datasetNames}
         datasets={yInputs}
         axisNames={axisNames}
         userOptions={userOptions}
-        showLegend={false}
+        showLegend={true}
       />
       <div>
         <SettingsModal

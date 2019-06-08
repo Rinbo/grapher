@@ -1,4 +1,4 @@
-export const options = (xlabel, ylabel, legend) => {
+export const options = (xlabel, ylabel, legend, showX = true, showY = true) => {
   const opts = {
     legend: {
       display: legend,
@@ -7,7 +7,7 @@ export const options = (xlabel, ylabel, legend) => {
     scales: {
       xAxes: [
         {
-          display: true,
+          display: showX,
           gridLines: {
             display: false,
             color: "#cccccc"
@@ -20,7 +20,7 @@ export const options = (xlabel, ylabel, legend) => {
       ],
       yAxes: [
         {
-          display: true,
+          display: showY,
           gridLines: {
             display: true,
             color: "rgba(204, 204, 204, 0.5)"
