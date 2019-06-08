@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import endpoint from "../apis/endpoint";
 import LineGraph from "./graphs/LineGraph";
+import PieGraph from "./graphs/PieGraph";
 import SendEmail from "./utility/SendEmail";
 import { Button, Icon } from "semantic-ui-react";
 
@@ -16,7 +17,6 @@ const PublicGraph = ({ props }) => {
   });
   const [showEmailForm, setShowEmailForm] = useState(false);
   const publicString = props.match.params.id;
-
   useEffect(() => {
     endpoint
       .get(`/graphs/${publicString}`)
@@ -61,6 +61,32 @@ const PublicGraph = ({ props }) => {
     }, 2000);
   };
 
+  const renderGraph = () => {
+    if (userOptions.graphType === "pie") {
+      return (
+        <PieGraph
+          labels={xAxisLabels}
+          datasetNames={datasetNames}
+          datasets={yInputs}
+          axisNames={axisNames}
+          userOptions={userOptions}
+          showLegend={true}
+        />
+      );
+    } else {
+      return (
+        <LineGraph
+          labels={xAxisLabels}
+          datasetNames={datasetNames}
+          datasets={yInputs}
+          axisNames={axisNames}
+          userOptions={userOptions}
+          showLegend={true}
+        />
+      );
+    }
+  };
+
   return (
     <div className="ui container">
       <div
@@ -69,15 +95,7 @@ const PublicGraph = ({ props }) => {
       >
         {title}
       </div>
-      <LineGraph
-        title={title}
-        labels={xAxisLabels}
-        datasetNames={datasetNames}
-        datasets={yInputs}
-        axisNames={axisNames}
-        userOptions={userOptions}
-        showLegend={true}
-      />
+      {renderGraph()}
       {showEmailForm ? (
         <SendEmail
           setShowEmailForm={setShowEmailForm}

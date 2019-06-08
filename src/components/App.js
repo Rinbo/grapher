@@ -9,11 +9,17 @@ import "../app.css";
 
 const routes = () => (
   <Switch>
-    <Route path="/" exact component={GraphContainer} />
+    <Route path="/" exact render={props => <GraphContainer props={props} />} />
+    />
     <Route
       path="/graphs/:id"
       exact
       render={props => <PublicGraph props={props} />}
+    />
+    <Route
+      path="/graphs/remake/:id"
+      exact
+      render={props => <GraphContainer props={props} />}
     />
   </Switch>
 );
@@ -22,7 +28,7 @@ const App = () => {
   return (
     <div>
       <Router history={history}>
-        <div style={{marginBottom: 20}}>
+        <div style={{ marginBottom: 20 }}>
           <Link to="/" className="item">
             <img
               src={logo}

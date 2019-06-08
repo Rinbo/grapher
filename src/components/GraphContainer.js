@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import history from "../history";
 import DatasetInputter from "./inputs/DatasetInputter";
 import LineGraph from "./graphs/LineGraph";
@@ -9,20 +9,44 @@ import endpoint from "../apis/endpoint";
 import convertToDto from "./utility/convertToDto";
 import { Button } from "semantic-ui-react";
 import ConfirmationModal from "./utility/ConfirmationModal";
+import Spinner from "./utility/Spinner";
 import PieGraph from "./graphs/PieGraph";
 
-const GraphContainer = () => {
+const GraphContainer = ({ props }) => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("Graph Title");
+  const [isLoading, setIsLoding] = useState(true);
   const [userOptions, setUserOptions] = useState({
     color: "multi",
     fillColor: false,
     graphType: "line"
   });
-
+  const publicString = props.match.params.id;
+  useEffect(() => {
+    if (publicString) {
+      endpoint
+        .get(`/graphs/${publicString}`)
+        .then(response => {
+          const res = response.data;
+          const inputs = res.yInputs.map(arr => {
+            return arr.dataPoints.map(dataPoint => dataPoint.dataPoint);
+          });
+          setYInputs(inputs);
+          setXAxisLabels(res.xAxisLabels.map(label => label.xAxisLabel));
+          setDatasetNames(
+            res.datasetNames.map(datasetName => datasetName.datasetName)
+          );
+          setAxisNames([res.xAxisName, res.yAxisName]);
+          setUserOptions(response.data.userOptions);
+          setTitle(res.title);
+        })
+        .catch(e => alert("Failed to fetch graph data"));
+    }
+    setIsLoding(false);
+  }, [publicString]);
   const onSubmit = e => {
     e.preventDefault();
     const restObject = convertToDto(
@@ -153,6 +177,8 @@ const GraphContainer = () => {
       );
     }
   };
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className="ui container" style={{ paddingBottom: 20 }}>

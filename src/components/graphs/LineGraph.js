@@ -40,7 +40,7 @@ const LineGraph = ({
         label: datasetNames[index],
         backgroundColor: userOptions.fillColor ? backgroundColor : "",
         borderColor: borderColor,
-        borderWidth: 1,
+        borderWidth: 1.5,
         defaultFontColor: "#cccccc",
         hoverBackgroundColor,
         hoverBorderColor: borderColor,
