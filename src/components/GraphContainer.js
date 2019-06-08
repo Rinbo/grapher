@@ -13,9 +13,9 @@ import Spinner from "./utility/Spinner";
 import PieGraph from "./graphs/PieGraph";
 
 const GraphContainer = ({ props }) => {
-  const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
+  const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7], [7,5,0]]);
   const [xAxisLabels, setXAxisLabels] = useState([1, 2, 3]);
-  const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
+  const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2", 'Dataset 3']);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("Graph Title");
   const [isLoading, setIsLoding] = useState(true);
@@ -201,7 +201,12 @@ const GraphContainer = ({ props }) => {
           modalTitle="Graph Settings"
           buttonName="Settings"
         />
-        <ConfirmationModal onSubmit={onSubmit} />
+        <ConfirmationModal
+          onSubmit={onSubmit}
+          prompt="Once you submit the graph data you wont't be able to edit it."
+          buttonName="Generate Link"
+          floated="right"
+        />
       </div>
       <form onSubmit={e => onSubmit(e)} id="dataForm">
         {renderDataSeries()}

@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Header, Modal, Icon } from "semantic-ui-react";
 
-const ConfirmationModal = ({ onSubmit }) => {
+const ConfirmationModal = ({ onSubmit, prompt, buttonName, floated=null }) => {
+  const [show, setShow] = useState(false);
+
   return (
     <Modal
       trigger={
@@ -10,20 +12,23 @@ const ConfirmationModal = ({ onSubmit }) => {
           inverted
           color="green"
           style={{ width: 130, marginTop: 15, marginBottom: 20 }}
-          floated="right"
+          floated={floated}
+          onClick={() => setShow(true)}
         >
-          Generate link
+          {buttonName}
         </Button>
       }
+      open={show}
+      onClose={() => setShow(false)}
       basic
       size="small"
     >
       <Header icon="archive" content="Are you sure?" />
       <Modal.Content>
-        <p>Once you submit the graph data you wont't be able to edit it.</p>
+        <p>{prompt}</p>
       </Modal.Content>
       <Modal.Actions>
-        <Button basic color="red" inverted>
+        <Button basic color="red" inverted onClick={() => setShow(false)}>
           <Icon name="remove" /> No
         </Button>
         <Button
