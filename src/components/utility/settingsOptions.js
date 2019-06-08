@@ -20,11 +20,11 @@ export const graphOptions = [
   {
     key: "line",
     text: "Line Graph",
-    value: 0
+    value: "line"
   },
   {
     key: "pie",
     text: "Pie graph",
-    value: 1
+    value: "pie"
   }
 ];

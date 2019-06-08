@@ -12,8 +12,6 @@ const SettingsModal = ({
   modalTitle,
   buttonName,
   setUserOptions,
-  graphType,
-  setGraphType,
   userOptions
 }) => {
   const [show, setShow] = useState(false);
@@ -57,11 +55,13 @@ const SettingsModal = ({
 
   const selectGraphType = (e, data) => {
     e.preventDefault();
-    setGraphType(data.value);
+    setUserOptions(prevState => {
+      return { ...prevState, graphType: data.value };
+    });
   };
 
   const renderLineGraphSettings = () => {
-    if (graphType === 0) {
+    if (userOptions.graphType === "line") {
       return (
         <>
           <AxisNames axisNames={axisNames} setAxisNames={setAxisNames} />

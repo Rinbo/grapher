@@ -7,7 +7,7 @@ import XAxisLabelInputter from "./inputs/XAxisLabelInputter";
 import DatasetNames from "./inputs/DatasetNames";
 import endpoint from "../apis/endpoint";
 import convertToDto from "./utility/convertToDto";
-import { Button, Dropdown } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import ConfirmationModal from "./utility/ConfirmationModal";
 import PieGraph from "./graphs/PieGraph";
 
@@ -17,11 +17,10 @@ const GraphContainer = () => {
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("Graph Title");
-  const [graphType, setGraphType] = useState(0);
-
   const [userOptions, setUserOptions] = useState({
-    color: "green",
-    fillColor: true
+    color: "multi",
+    fillColor: false,
+    graphType: "line"
   });
 
   const onSubmit = e => {
@@ -49,6 +48,7 @@ const GraphContainer = () => {
           labels={xAxisLabels}
           setLabels={setXAxisLabels}
           addDataPoints={addDataPoints}
+          removeDataPoints={removeDataPoints}
         />
         {yInputs.map((arr, index) => {
           return (
@@ -89,6 +89,15 @@ const GraphContainer = () => {
     setDatasetNames(newState);
   };
 
+  const removeDataPoints = () => {
+    const newYState = yInputs.map(arr => {
+      arr.pop();
+      return [...arr];
+    });
+    setYInputs(newYState);
+    setXAxisLabels(xAxisLabels.slice(0, xAxisLabels.length - 1));
+  };
+
   const randomArray = length => {
     const arr = [];
     for (let i = 0; i < length; i++) {
@@ -120,7 +129,7 @@ const GraphContainer = () => {
   };
 
   const renderGraph = () => {
-    if (graphType === 1) {
+    if (userOptions.graphType === "pie") {
       return (
         <PieGraph
           labels={xAxisLabels}
@@ -162,8 +171,6 @@ const GraphContainer = () => {
           axisNames={axisNames}
           title={title}
           setTitle={setTitle}
-          graphType={graphType}
-          setGraphType={setGraphType}
           content=""
           modalTitle="Graph Settings"
           buttonName="Settings"

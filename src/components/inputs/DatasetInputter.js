@@ -41,7 +41,7 @@ const DatasetInputter = ({
       <Button
         style={{ marginTop: 10 }}
         inverted
-        color="green"
+        color="red"
         basic
         size="tiny"
         icon="trash"

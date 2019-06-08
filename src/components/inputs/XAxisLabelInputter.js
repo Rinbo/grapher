@@ -1,7 +1,12 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 
-const XAxisLabelInputter = ({ labels, setLabels, addDataPoints }) => {
+const XAxisLabelInputter = ({
+  labels,
+  setLabels,
+  addDataPoints,
+  removeDataPoints
+}) => {
   const renderInputs = () => {
     return labels.map((label, index) => {
       return (
@@ -37,14 +42,26 @@ const XAxisLabelInputter = ({ labels, setLabels, addDataPoints }) => {
       </div>
       <div style={{ marginTop: 20 }}>{renderInputs()}</div>
       <Button
-        style={{ marginTop: 10 }}
+        style={{ marginTop: 10, width: 90, paddingLeft: 10, paddingRight:10 }}
         basic
+        type="button"
         size="tiny"
         inverted
         color="green"
         onClick={e => addDataPoints(e)}
       >
         Add row
+      </Button>
+      <Button
+        style={{ marginTop: 10, width: 90, paddingLeft: 10, paddingRight:10 }}
+        basic
+        size="tiny"
+        inverted
+        color="red"
+        type="button"
+        onClick={e => removeDataPoints()}
+      >
+        Remove row
       </Button>
     </div>
   );
