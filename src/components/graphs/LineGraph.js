@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { options } from "../utility/options";
-import { BG_COLOR, BORDER_COLOR, HOVER_COLOR } from "./colors.js";
+import { BG_COLOR, BORDER_COLOR, HOVER_COLOR, randomizer } from "./colors.js";
 
 const LineGraph = ({
   labels,
@@ -16,28 +16,24 @@ const LineGraph = ({
       let borderColor;
       let backgroundColor;
       let hoverBackgroundColor;
-      let hoverBorderColor;
-      let i;
 
       if (userOptions.color === "multi") {
-        index >= BORDER_COLOR.length
-          ? (i = Math.floor(Math.random() * 9))
-          : (i = index);
-
-        borderColor = BORDER_COLOR[i];
-        backgroundColor = BG_COLOR[i];
-        hoverBackgroundColor = HOVER_COLOR[i];
-        hoverBorderColor = BORDER_COLOR[i];
+        borderColor = BORDER_COLOR[index];
+        backgroundColor = BG_COLOR[index];
+        hoverBackgroundColor = HOVER_COLOR[index];
+        if (index >= BG_COLOR.length) {
+          borderColor = `rgb(${randomizer()}, ${randomizer()}, ${randomizer()})`;
+          backgroundColor = `rgba(${randomizer()}, ${randomizer()}, ${randomizer()}, 0.2)`;
+          backgroundColor = `rgba(${randomizer()}, ${randomizer()}, ${randomizer()}, 0.5)`;
+        }
       } else if (userOptions.color === "green") {
         borderColor = "rgba(33,186,69,1)";
         backgroundColor = "rgba(33,186,69,0.2)";
         hoverBackgroundColor = "rgba(33,186,69,0.4)";
-        hoverBorderColor = "rgba(33,186,69,1)";
       } else {
         borderColor = "rgb(170, 4, 54)";
         backgroundColor = "rgba(170, 4, 54, 0.2)";
         hoverBackgroundColor = "rgba(170, 4, 54, 0.4)";
-        hoverBorderColor = "rgba(170, 4, 54, 1)";
       }
 
       return {
@@ -47,7 +43,7 @@ const LineGraph = ({
         borderWidth: 1,
         defaultFontColor: "#cccccc",
         hoverBackgroundColor,
-        hoverBorderColor,
+        hoverBorderColor: borderColor,
         data: [...dataset]
       };
     });
