@@ -7,7 +7,7 @@ import XAxisLabelInputter from "./inputs/XAxisLabelInputter";
 import DatasetNames from "./inputs/DatasetNames";
 import endpoint from "../apis/endpoint";
 import convertToDto from "./utility/convertToDto";
-import { Button } from "semantic-ui-react";
+import { Button, Dropdown } from "semantic-ui-react";
 import ConfirmationModal from "./utility/ConfirmationModal";
 import PieGraph from "./graphs/PieGraph";
 
@@ -17,6 +17,8 @@ const GraphContainer = () => {
   const [datasetNames, setDatasetNames] = useState(["Dataset 1", "Dataset 2"]);
   const [axisNames, setAxisNames] = useState(["X-axis", "Y-axis"]);
   const [title, setTitle] = useState("Graph Title");
+  const [graphType, setGraphType] = useState(0);
+
   const [userOptions, setUserOptions] = useState({
     color: "green",
     fillColor: true
@@ -117,6 +119,32 @@ const GraphContainer = () => {
     setXAxisLabels(prevState => [...prevState, prevState.length + 1]);
   };
 
+  const renderGraph = () => {
+    if (graphType === 1) {
+      return (
+        <PieGraph
+          labels={xAxisLabels}
+          datasetNames={datasetNames}
+          datasets={yInputs}
+          axisNames={axisNames}
+          userOptions={userOptions}
+          showLegend={true}
+        />
+      );
+    } else {
+      return (
+        <LineGraph
+          labels={xAxisLabels}
+          datasetNames={datasetNames}
+          datasets={yInputs}
+          axisNames={axisNames}
+          userOptions={userOptions}
+          showLegend={true}
+        />
+      );
+    }
+  };
+
   return (
     <div className="ui container" style={{ paddingBottom: 20 }}>
       <div
@@ -125,14 +153,7 @@ const GraphContainer = () => {
       >
         {title}
       </div>
-      <LineGraph
-        labels={xAxisLabels}
-        datasetNames={datasetNames}
-        datasets={yInputs}
-        axisNames={axisNames}
-        userOptions={userOptions}
-        showLegend={true}
-      />
+      {renderGraph()}
       <div>
         <SettingsModal
           setAxisNames={setAxisNames}
@@ -141,6 +162,8 @@ const GraphContainer = () => {
           axisNames={axisNames}
           title={title}
           setTitle={setTitle}
+          graphType={graphType}
+          setGraphType={setGraphType}
           content=""
           modalTitle="Graph Settings"
           buttonName="Settings"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Header, Modal, Dropdown } from "semantic-ui-react";
+import { colorOptions, graphOptions } from "./settingsOptions";
 import AxisNames from "../inputs/AxisNames";
 
 const SettingsModal = ({
@@ -11,27 +12,11 @@ const SettingsModal = ({
   modalTitle,
   buttonName,
   setUserOptions,
+  graphType,
+  setGraphType,
   userOptions
 }) => {
   const [show, setShow] = useState(false);
-
-  const colorOptions = [
-    {
-      key: "green",
-      text: "Green",
-      value: "green"
-    },
-    {
-      key: "red",
-      text: "Red",
-      value: "red"
-    },
-    {
-      key: "multi",
-      text: "Multiple colors",
-      value: "multi"
-    }
-  ];
 
   const renderGraphTitle = () => {
     return (
@@ -70,6 +55,39 @@ const SettingsModal = ({
     });
   };
 
+  const selectGraphType = (e, data) => {
+    e.preventDefault();
+    setGraphType(data.value);
+  };
+
+  const renderLineGraphSettings = () => {
+    if (graphType === 0) {
+      return (
+        <>
+          <AxisNames axisNames={axisNames} setAxisNames={setAxisNames} />
+          <div className="ui field" style={{ marginTop: 15 }}>
+            {toggleFillColor()}
+          </div>
+          <div style={{ marginTop: 15 }}>
+            <label
+              style={{ color: "#cccccc", display: "block", marginBottom: 10 }}
+            >
+              Choose a color theme
+            </label>
+            <Dropdown
+              placeholder="Colors"
+              selection
+              options={colorOptions}
+              onChange={selectColor}
+            />
+          </div>
+        </>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <Modal
       trigger={
@@ -92,23 +110,20 @@ const SettingsModal = ({
       <Modal.Content>
         <p>{content}</p>
         {renderGraphTitle()}
-        <AxisNames axisNames={axisNames} setAxisNames={setAxisNames} />
-        <div className="ui field" style={{ marginTop: 15 }}>
-          {toggleFillColor()}
+        <div style={{ marginBottom: 15, marginTop: 15 }}>
+          <Button.Group basic inverted color="green">
+            <Button>Graph Type</Button>
+            <Dropdown
+              className="button icon"
+              placeholder="Graph Type"
+              floating
+              options={graphOptions}
+              onChange={selectGraphType}
+              trigger={<React.Fragment />}
+            />
+          </Button.Group>
         </div>
-        <div style={{ marginTop: 15 }}>
-          <label
-            style={{ color: "#cccccc", display: "block", marginBottom: 10 }}
-          >
-            Choose a color theme
-          </label>
-          <Dropdown
-            placeholder="Colors"
-            selection
-            options={colorOptions}
-            onChange={selectColor}
-          />
-        </div>
+        {renderLineGraphSettings()}
       </Modal.Content>
       <Modal.Actions>
         <Button
