@@ -26,7 +26,7 @@ const XAxisLabelInputter = ({ labels, setLabels, addDataPoints }) => {
     <div style={{ marginBottom: 15 }} className="showBorder">
       <div className="ui input">
         <input
-          value="X-LABELS"
+          value="LABELS"
           style={{
             textAlign: "center",
             fontWeight: "bold",

@@ -9,7 +9,7 @@ import endpoint from "../apis/endpoint";
 import convertToDto from "./utility/convertToDto";
 import { Button } from "semantic-ui-react";
 import ConfirmationModal from "./utility/ConfirmationModal";
-import PolarGraph from "./graphs/PolarGraph";
+import PieGraph from "./graphs/PieGraph";
 
 const GraphContainer = () => {
   const [yInputs, setYInputs] = useState([[1, 8, 4], [2, 3, 7]]);
@@ -109,7 +109,10 @@ const GraphContainer = () => {
 
   const addDataPoints = e => {
     e.preventDefault();
-    const newYState = yInputs.map(arr => [...arr, 0]);
+    const newYState = yInputs.map(arr => [
+      ...arr,
+      Math.floor(Math.random() * 9 + 1)
+    ]);
     setYInputs(newYState);
     setXAxisLabels(prevState => [...prevState, prevState.length + 1]);
   };
@@ -122,7 +125,7 @@ const GraphContainer = () => {
       >
         {title}
       </div>
-      <PolarGraph
+      <LineGraph
         labels={xAxisLabels}
         datasetNames={datasetNames}
         datasets={yInputs}

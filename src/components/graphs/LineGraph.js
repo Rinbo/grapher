@@ -20,7 +20,7 @@ const LineGraph = ({
       let i;
 
       if (userOptions.color === "multi") {
-        index > BORDER_COLOR.length
+        index >= BORDER_COLOR.length
           ? (i = Math.floor(Math.random() * 9))
           : (i = index);
 

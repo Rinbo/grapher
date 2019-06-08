@@ -35,6 +35,11 @@ export const options = (xlabel, ylabel, legend, showX = true, showY = true) => {
         }
       ]
     },
+    series: {
+      pie: {
+        show: true
+      }
+    },
     maintainAspectRatio: false
   };
   return opts;
