@@ -33,11 +33,12 @@ const routes = () => (
 
 const App = () => {
   return (
-    <div>
+    <div style={{ paddingBottom: 80 }}>
       <Router history={history}>
         <Header />
         {routes()}
       </Router>
+      {/*<div className="borjessons-footer">{"Copyright \u00A9 borjessons"}</div>*/}
     </div>
   );
 };

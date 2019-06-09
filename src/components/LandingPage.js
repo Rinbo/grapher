@@ -50,7 +50,9 @@ const LandingPage = () => {
         sharable link viewable from any device directly in the browser. No login
         required.
       </div>
-      <div className="ui centered inverted header" style={{marginBottom: 35}}>HOW IT WORKS</div>
+      <div className="ui centered inverted header" style={{ marginBottom: 35 }}>
+        HOW IT WORKS
+      </div>
       <div style={{ margin: "auto", width: 600 }}>
         {renderInstructions()}
         <div style={{ marginTop: 15 }}>
@@ -74,7 +76,6 @@ const LandingPage = () => {
           />
         </div>
       </div>
-      <div className="borjessons-footer">{"Copyright \u00A9 borjessons"}</div>
     </div>
   );
 };
