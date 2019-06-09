@@ -45,6 +45,15 @@ body {
     border-right: solid 1px #cccccc;
   }
 }
+.borjessons-footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
 
 #flash {
   visibility: hidden;

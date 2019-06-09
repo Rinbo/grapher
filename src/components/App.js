@@ -1,10 +1,10 @@
 import React from "react";
-import { Route, Router, Switch, Link } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "../history";
 import GraphContainer from "./GraphContainer";
 import PublicGraph from "./PublicGraph";
 import LandingPage from "./LandingPage";
-import logo from "../resources/b-grapher-white.png";
+import Header from "./Header";
 import "semantic-ui-css/semantic.min.css";
 import "../app.css";
 
@@ -35,15 +35,7 @@ const App = () => {
   return (
     <div>
       <Router history={history}>
-        <div style={{ marginBottom: 20 }}>
-          <Link to="/" className="item">
-            <img
-              src={logo}
-              alt="Borjesson Grapher"
-              style={{ width: 180, padding: 10 }}
-            />
-          </Link>
-        </div>
+        <Header />
         {routes()}
       </Router>
     </div>
