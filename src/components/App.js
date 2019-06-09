@@ -3,13 +3,20 @@ import { Route, Router, Switch, Link } from "react-router-dom";
 import history from "../history";
 import GraphContainer from "./GraphContainer";
 import PublicGraph from "./PublicGraph";
+import LandingPage from "./LandingPage";
 import logo from "../resources/b-grapher-white.png";
 import "semantic-ui-css/semantic.min.css";
 import "../app.css";
 
 const routes = () => (
   <Switch>
-    <Route path="/" exact render={props => <GraphContainer props={props} />} />
+    <Route path="/" exact render={props => <LandingPage props={props} />} />
+    />
+    <Route
+      path="/graphs"
+      exact
+      render={props => <GraphContainer props={props} />}
+    />
     />
     <Route
       path="/graphs/:id"
