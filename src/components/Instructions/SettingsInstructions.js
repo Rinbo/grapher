@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../resources/b-grapher-white.png";
-import { Transition } from "semantic-ui-react";
+import gif from "../../resources/d1.gif";
+import { Transition, Image } from "semantic-ui-react";
 
 const SettingsInstructions = () => {
   const [visiable, setVisiable] = useState(false);
@@ -10,20 +10,23 @@ const SettingsInstructions = () => {
   }, []);
 
   return (
-    <div style={{ height: 300 }}>
-      <div style={{ textAlign: "center" }}>
+    <div >
+      <div style={{ textAlign: "center", marginBottom:10 }}>
         Name your graph and axis in the settings
       </div>
       <Transition.Group animation="fade" duration="1000">
         {visiable && (
-          <img
-            src={logo}
+          <Image
+            src={gif}
             alt="Borjesson Grapher"
+            fluid
             style={{
-              width: 320,
-              padding: 10,
+              maxWidth: 500,
+              padding: 0,
               margin: "auto",
-              display: "block"
+              display: "block",
+              border: "solid 1px #cccccc",
+              borderRadius: 10
             }}
           />
         )}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../resources/b-grapher-white.png";
 import SettingsInstructions from "./Instructions/SettingsInstructions";
-import LabelsInstructions from "./Instructions/LabelsInstructions";
 import { Button } from "semantic-ui-react";
 import DatasetInstructions from "./Instructions/DatasetInstructions";
 import GenerationInstructions from "./Instructions/GenerationInstructions";
@@ -11,7 +10,7 @@ const LandingPage = () => {
   const [instructions, setInstructions] = useState(0);
 
   const handleIncrement = () => {
-    if (instructions < 4) setInstructions(prevState => ++prevState);
+    if (instructions < 3) setInstructions(prevState => ++prevState);
   };
 
   const handleDecrement = () => {
@@ -23,12 +22,10 @@ const LandingPage = () => {
       case 0:
         return <SettingsInstructions />;
       case 1:
-        return <LabelsInstructions />;
-      case 2:
         return <DatasetInstructions />;
-      case 3:
+      case 2:
         return <GenerationInstructions />;
-      case 4:
+      case 3:
         return <RemakeInstructions />;
       default:
         return <SettingsInstructions />;
@@ -40,7 +37,7 @@ const LandingPage = () => {
       <img
         src={logo}
         alt="Borjesson Grapher"
-        style={{ width: 320, padding: 10, margin: "auto", display: "block" }}
+        style={{ maxWidth: 320, padding: 10, margin: "auto", display: "block" }}
       />
       <div
         className="ui inverted padded center aligned segment"
@@ -50,12 +47,12 @@ const LandingPage = () => {
         sharable link viewable from any device directly in the browser. No login
         required.
       </div>
-      <div className="ui centered inverted header" style={{ marginBottom: 35 }}>
+      <div className="ui centered inverted header" style={{ marginBottom: 15 }}>
         HOW IT WORKS
       </div>
-      <div style={{ margin: "auto", width: 600 }}>
+      <div style={{ margin: "auto", maxWidth: 500 }}>
         {renderInstructions()}
-        <div style={{ marginTop: 15 }}>
+        <div style={{ marginTop: 10 }}>
           <Button
             inverted
             basic
