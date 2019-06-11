@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import logo from "../resources/b-grapher-white.png";
 import SettingsInstructions from "./Instructions/SettingsInstructions";
-import { Button } from "semantic-ui-react";
 import DatasetInstructions from "./Instructions/DatasetInstructions";
 import GenerationInstructions from "./Instructions/GenerationInstructions";
 import RemakeInstructions from "./Instructions/RemakeInstructions";
@@ -33,7 +34,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div style={{ marginTop: 50 }} className="ui container">
+    <div style={{ marginTop: 25 }} className="ui container">
       <img
         src={logo}
         alt="Borjesson Grapher"
@@ -46,6 +47,13 @@ const LandingPage = () => {
         Create beautiful charts with your custom data, and generate a permanent
         sharable link viewable from any device directly in the browser. No login
         required.
+      </div>
+      <div>
+        <Link to="/graphs">
+          <Button inverted basic size="large" color="green" style={{margin: "auto", display: "block"}}>
+            Try It Now
+          </Button>
+        </Link>
       </div>
       <div className="ui centered inverted header" style={{ marginBottom: 15 }}>
         HOW IT WORKS
@@ -67,7 +75,7 @@ const LandingPage = () => {
             basic
             color="green"
             onClick={handleIncrement}
-            disabled={instructions === 4 ? true : false}
+            disabled={instructions === 3 ? true : false}
             floated="right"
             icon="arrow right"
           />

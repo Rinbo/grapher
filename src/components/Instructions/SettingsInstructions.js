@@ -25,7 +25,7 @@ const SettingsInstructions = () => {
               padding: 0,
               margin: "auto",
               display: "block",
-              border: "solid 1px #cccccc",
+              border: "solid 3px #cccccc",
               borderRadius: 10
             }}
           />
