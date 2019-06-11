@@ -32,6 +32,7 @@ const routes = () => (
       exact
       render={props => <GraphContainer props={props} />}
     />
+    <Route path="*" to="/index.html" />
   </Switch>
 );
 
