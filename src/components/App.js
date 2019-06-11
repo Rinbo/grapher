@@ -31,8 +31,7 @@ const routes = () => (
       path={`${process.env.PUBLIC_URL}/graphs/remake/:id`}
       exact
       render={props => <GraphContainer props={props} />}
-    />
-    <Route path="*" to="/index.html" />
+    />    
   </Switch>
 );
 
