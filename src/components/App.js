@@ -10,21 +10,25 @@ import "../app.css";
 
 const routes = () => (
   <Switch>
-    <Route path="/" exact render={props => <LandingPage props={props} />} />
+    <Route
+      path="${process.env.PUBLIC_URL}/"
+      exact
+      render={props => <LandingPage props={props} />}
+    />
     />
     <Route
-      path="/graphs"
+      path="${process.env.PUBLIC_URL}/graphs"
       exact
       render={props => <GraphContainer props={props} />}
     />
     />
     <Route
-      path="/graphs/:id"
+      path="${process.env.PUBLIC_URL}/graphs/:id"
       exact
       render={props => <PublicGraph props={props} />}
     />
     <Route
-      path="/graphs/remake/:id"
+      path="${process.env.PUBLIC_URL}/graphs/remake/:id"
       exact
       render={props => <GraphContainer props={props} />}
     />
