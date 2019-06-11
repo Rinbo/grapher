@@ -11,6 +11,8 @@ const SendEmail = ({ setShowEmailForm, flashSuccess }) => {
 
     const hostname = window.location.href;
 
+    console.log(window.location)
+
     const textWithLink =
       text + `<br>Check out this graph: <a href="${hostname}">${hostname}</a>`;
 
