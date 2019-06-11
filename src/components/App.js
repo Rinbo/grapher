@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, HashRouter as Router, Switch } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "../history";
 import GraphContainer from "./GraphContainer";
 import PublicGraph from "./PublicGraph";
