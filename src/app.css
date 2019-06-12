@@ -45,6 +45,13 @@ body {
     border-right: solid 1px #cccccc;
   }
 }
+
+.flex-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .borjessons-footer {
   text-align: center;
   position: fixed;

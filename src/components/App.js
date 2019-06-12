@@ -37,7 +37,7 @@ const routes = () => (
 
 const App = () => {
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div className="ui container" style={{paddingBottom: 10}}>
       <Router history={history}>
         <Header />
         {routes()}

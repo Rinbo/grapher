@@ -21,7 +21,7 @@ const SettingsInstructions = () => {
             alt="Borjesson Grapher"
             fluid
             style={{
-              maxWidth: 500,
+              maxWidth: 500,            
               padding: 0,
               margin: "auto",
               display: "block",
