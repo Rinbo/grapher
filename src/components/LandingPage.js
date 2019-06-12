@@ -34,8 +34,8 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex-container">
-      <div style={{ marginTop: 20, marginBottom: 30 }}>
+    <div className="ui container">
+      <div style={{ marginTop: "4%", marginBottom: 30 }}>
         <img
           src={logo}
           alt="Borjesson Grapher"
