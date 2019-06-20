@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import gif from "../../resources/d2.gif";
-import { Transition, Image } from "semantic-ui-react";
+import { Transition, Image, Loader } from "semantic-ui-react";
 
 const DatasetInstructions = () => {
   const [visiable, setVisiable] = useState(false);
@@ -8,6 +8,8 @@ const DatasetInstructions = () => {
   useEffect(() => {
     setVisiable(true);
   }, []);
+
+  if (!visiable) return <Loader />;
 
   return (
     <div>

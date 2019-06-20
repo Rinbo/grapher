@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import gif from "../../resources/d4.gif";
+import "./CustomLoader";
 import { Transition, Image } from "semantic-ui-react";
+import CustomLoader from "./CustomLoader";
 
 const RemakeInstructions = () => {
   const [visiable, setVisiable] = useState(false);
@@ -15,7 +17,7 @@ const RemakeInstructions = () => {
         Copy graph data to continue working
       </div>
       <Transition.Group animation="fade" duration="1000">
-        {visiable && (
+        {visiable ? (
           <Image
             src={gif}
             alt="Borjesson Grapher"
@@ -29,6 +31,8 @@ const RemakeInstructions = () => {
               borderRadius: 10
             }}
           />
+        ) : (
+          <CustomLoader />
         )}
       </Transition.Group>
     </div>

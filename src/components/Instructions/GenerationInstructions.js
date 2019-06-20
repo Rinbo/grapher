@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import gif from "../../resources/d3.gif";
 import { Transition, Image } from "semantic-ui-react";
+import CustomLoader from "./CustomLoader";
+
 
 const GenerationInstructions = () => {
   const [visiable, setVisiable] = useState(false);
