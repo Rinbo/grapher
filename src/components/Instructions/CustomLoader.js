@@ -6,7 +6,7 @@ const CustomLoader = () => {
     <Segment
       style={{
         maxWidth: 500,
-        height: 281,
+        height: 281.26,
         padding: 0,
         margin: "auto",
         display: "block",

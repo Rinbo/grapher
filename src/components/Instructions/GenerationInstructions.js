@@ -3,7 +3,6 @@ import gif from "../../resources/d3.gif";
 import { Transition, Image } from "semantic-ui-react";
 import CustomLoader from "./CustomLoader";
 
-
 const GenerationInstructions = () => {
   const [visiable, setVisiable] = useState(false);
 
@@ -17,7 +16,7 @@ const GenerationInstructions = () => {
         Generate graph link and share it
       </div>
       <Transition.Group animation="fade" duration="1000">
-        {visiable && (
+        {visiable ? (
           <Image
             src={gif}
             alt="Borjesson Grapher"
@@ -31,6 +30,8 @@ const GenerationInstructions = () => {
               borderRadius: 10
             }}
           />
+        ) : (
+          <CustomLoader />
         )}
       </Transition.Group>
     </div>

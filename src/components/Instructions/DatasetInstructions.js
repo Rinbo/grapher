@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import gif from "../../resources/d2.gif";
-import { Transition, Image, Loader } from "semantic-ui-react";
+import { Transition, Image } from "semantic-ui-react";
+import CustomLoader from "./CustomLoader";
 
 const DatasetInstructions = () => {
   const [visiable, setVisiable] = useState(false);
@@ -9,15 +10,13 @@ const DatasetInstructions = () => {
     setVisiable(true);
   }, []);
 
-  if (!visiable) return <Loader />;
-
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: 10 }}>
         Add your labels and datasets
       </div>
       <Transition.Group animation="fade" duration="1000">
-        {visiable && (
+        {visiable ? (
           <Image
             src={gif}
             alt="Borjesson Grapher"
@@ -31,6 +30,8 @@ const DatasetInstructions = () => {
               borderRadius: 10
             }}
           />
+        ) : (
+          <CustomLoader />
         )}
       </Transition.Group>
     </div>
