@@ -15,12 +15,10 @@ const routes = () => (
       exact
       render={props => <LandingPage props={props} />}
     />
-    />
     <Route
       path={`${process.env.PUBLIC_URL}/graphs`}
       exact
       render={props => <GraphContainer props={props} />}
-    />
     />
     <Route
       path={`${process.env.PUBLIC_URL}/graphs/:id`}
