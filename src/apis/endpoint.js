@@ -4,7 +4,7 @@ let backendHost;
 const hostname = window && window.location && window.location.hostname;
 
 if (hostname === "grapher.borjessons.nu") {
-  backendHost = "http://13.49.111.250:8080/g-end";
+  backendHost = "https://typing2.borjessons.nu/g-end";
 } else {
   backendHost = "http://localhost:8080/g-end";
 }
