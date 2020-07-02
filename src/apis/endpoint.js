@@ -4,11 +4,11 @@ let backendHost;
 const hostname = window && window.location && window.location.hostname;
 
 if (hostname === "grapher.borjessons.nu") {
-  backendHost = "https://typing2.borjessons.nu/g-end";
+  backendHost = "http://13.49.111.250:8080/g-end";
 } else {
   backendHost = "http://localhost:8080/g-end";
 }
 
 export default axios.create({
-  baseURL: backendHost
+  baseURL: backendHost,
 });
